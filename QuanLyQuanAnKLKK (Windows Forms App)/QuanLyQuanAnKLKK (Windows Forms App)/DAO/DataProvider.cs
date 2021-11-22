@@ -28,11 +28,12 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         private DataProvider() { }
 
         private string connectionSTR = @"Data Source=./;Initial Catalog=QuanLyQuanAnKLKK;Integrated Security=True";
+
         //sử dụng các hàm dưới đây để truy vấn sql
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
-            using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(connectionSTR))
+            using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(connectionSTR)) 
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);

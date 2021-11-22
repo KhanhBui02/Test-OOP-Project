@@ -32,13 +32,13 @@
             this.TabpFood = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.nmPriceFood = new System.Windows.Forms.NumericUpDown();
+            this.nmPrice = new System.Windows.Forms.NumericUpDown();
             this.lbPriceFood = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.cbxFoodCategory = new System.Windows.Forms.ComboBox();
             this.lbFoodCategory = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txbFoodName = new System.Windows.Forms.TextBox();
             this.lbFoodName = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.txtIDFood = new System.Windows.Forms.TextBox();
@@ -118,7 +118,7 @@
             this.TabpFood.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmPriceFood)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmPrice)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -195,26 +195,26 @@
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.nmPriceFood);
+            this.panel10.Controls.Add(this.nmPrice);
             this.panel10.Controls.Add(this.lbPriceFood);
             this.panel10.Location = new System.Drawing.Point(6, 167);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(270, 42);
             this.panel10.TabIndex = 4;
             // 
-            // nmPriceFood
+            // nmPrice
             // 
-            this.nmPriceFood.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nmPriceFood.Location = new System.Drawing.Point(122, 9);
-            this.nmPriceFood.Maximum = new decimal(new int[] {
+            this.nmPrice.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nmPrice.Location = new System.Drawing.Point(122, 9);
+            this.nmPrice.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.nmPriceFood.Name = "nmPriceFood";
-            this.nmPriceFood.Size = new System.Drawing.Size(133, 22);
-            this.nmPriceFood.TabIndex = 1;
-            this.nmPriceFood.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nmPrice.Name = "nmPrice";
+            this.nmPrice.Size = new System.Drawing.Size(133, 22);
+            this.nmPrice.TabIndex = 1;
+            this.nmPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbPriceFood
             // 
@@ -228,20 +228,20 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.textBox3);
+            this.panel9.Controls.Add(this.cbxFoodCategory);
             this.panel9.Controls.Add(this.lbFoodCategory);
             this.panel9.Location = new System.Drawing.Point(6, 119);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(270, 42);
             this.panel9.TabIndex = 3;
             // 
-            // textBox3
+            // cbxFoodCategory
             // 
-            this.textBox3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(122, 9);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(133, 22);
-            this.textBox3.TabIndex = 1;
+            this.cbxFoodCategory.FormattingEnabled = true;
+            this.cbxFoodCategory.Location = new System.Drawing.Point(122, 9);
+            this.cbxFoodCategory.Name = "cbxFoodCategory";
+            this.cbxFoodCategory.Size = new System.Drawing.Size(133, 21);
+            this.cbxFoodCategory.TabIndex = 1;
             // 
             // lbFoodCategory
             // 
@@ -255,20 +255,20 @@
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.textBox2);
+            this.panel8.Controls.Add(this.txbFoodName);
             this.panel8.Controls.Add(this.lbFoodName);
             this.panel8.Location = new System.Drawing.Point(6, 71);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(270, 42);
             this.panel8.TabIndex = 2;
             // 
-            // textBox2
+            // txbFoodName
             // 
-            this.textBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(122, 9);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(133, 22);
-            this.textBox2.TabIndex = 1;
+            this.txbFoodName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbFoodName.Location = new System.Drawing.Point(122, 9);
+            this.txbFoodName.Name = "txbFoodName";
+            this.txbFoodName.Size = new System.Drawing.Size(133, 22);
+            this.txbFoodName.TabIndex = 1;
             // 
             // lbFoodName
             // 
@@ -391,6 +391,7 @@
             this.btViewFood.TabIndex = 1;
             this.btViewFood.Text = "Xem";
             this.btViewFood.UseVisualStyleBackColor = true;
+            this.btViewFood.Click += new System.EventHandler(this.btViewFood_Click);
             // 
             // btAddFood
             // 
@@ -943,7 +944,7 @@
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(562, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 16);
+            this.label1.Size = new System.Drawing.Size(89, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Ngày kết thúc";
             // 
@@ -953,7 +954,7 @@
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(85, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 16);
+            this.label2.Size = new System.Drawing.Size(85, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Ngày bắt đầu";
             // 
@@ -1002,7 +1003,7 @@
             this.panel6.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmPriceFood)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmPrice)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -1087,12 +1088,11 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label lbPriceFood;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label lbFoodCategory;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txbFoodName;
         private System.Windows.Forms.Label lbFoodName;
-        private System.Windows.Forms.NumericUpDown nmPriceFood;
+        private System.Windows.Forms.NumericUpDown nmPrice;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.TextBox txtCategoryName;
@@ -1142,5 +1142,6 @@
         private System.Windows.Forms.Panel panel27;
         private System.Windows.Forms.ComboBox cbStatusTable;
         private System.Windows.Forms.Label lbStatusTable;
+        private System.Windows.Forms.ComboBox cbxFoodCategory;
     }
 }
