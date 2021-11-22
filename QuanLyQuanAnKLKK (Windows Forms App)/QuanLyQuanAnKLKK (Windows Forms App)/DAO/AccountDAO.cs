@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
 {
-    public class AcountDAO
+    public class AccountDAO
     {
-        private static AcountDAO instance;
+        private static AccountDAO instance;
 
-        public static AcountDAO Instance
+        public static AccountDAO Instance
         {
-            get { if (instance == null) instance = new AcountDAO(); return instance; }
+            get { if (instance == null) instance = new AccountDAO(); return instance; }
             private set { instance = value; }
         }
 
-        private AcountDAO() { }
+        private AccountDAO() { }
 
         public bool Login(string userName, string password)
         {

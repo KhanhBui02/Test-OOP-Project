@@ -17,7 +17,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 
         public Account LoginAccount 
         { 
-            get => loginAccount;
+            get {return loginAccount;}
             set { loginAccount = value; ChangeAccount(loginAccount.Type); }
         }
 

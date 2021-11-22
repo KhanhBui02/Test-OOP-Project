@@ -30,9 +30,9 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
         private string password;
         private int type;
 
-        public string UserName { get => userName; set => userName = value; }
-        public string DisplayName { get => displayName; set => displayName = value; }
-        public string Password { get => password; set => password = value; }
-        public int Type { get => type; set => type = value; }
+        public string UserName { get { return userName; } set { userName = value;} }
+        public string DisplayName { get {return displayName;} set { displayName = value;} }
+        public string Password { get {return password;} set {password = value;} }
+        public int Type { get { return type;} set {type = value;} }
     }
 }
