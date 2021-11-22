@@ -12,3 +12,15 @@ C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Wi
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormManager.resources
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormAdmin.resources
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormChangeAccountInfo.resources
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe.config
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csprojResolveAssemblyReference.cache
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormAdmin.resources
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormLogin.resources
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormManager.resources
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormChangeAccountInfo.resources
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.Properties.Resources.resources
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.GenerateResource.Cache
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
+D:\VSS\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
