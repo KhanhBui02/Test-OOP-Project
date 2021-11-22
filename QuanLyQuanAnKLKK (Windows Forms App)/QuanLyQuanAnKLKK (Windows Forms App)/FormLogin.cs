@@ -1,4 +1,5 @@
 ﻿using QuanLyQuanAnKLKK__Windows_Forms_App_.DAO;
+using QuanLyQuanAnKLKK__Windows_Forms_App_.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,16 +21,17 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 
         private void btOut_Click(object sender, EventArgs e)
         {
-           Application.Exit();        //ấn nút tắt chương trình sẽ hiện bản thông báo "có thật sự muốn tắt"
+            Application.Exit();        //ấn nút tắt chương trình sẽ hiện bản thông báo "có thật sự muốn tắt"
         }
 
         private void btLogin_Click(object sender, EventArgs e)  // khi ấn vào nút đăng nhập sẽ đi tới form quản lý bàn ăn và thanh toán
         {
             string userName = txtLogin.Text;
             string password = txtPassWord.Text;
-            if(Login(userName, password))
+            if (Login(userName, password))
             {
-                FormManager f = new FormManager();
+                Account loginAccount = AcountDAO.Instance.GetAccountByUserName(userName);
+                FormManager f = new FormManager(loginAccount);
                 this.Hide();                                    // khi show form quản lý bàn ăn và thanh toán sẽ tắt form đăng nhập
                 f.ShowDialog();
                 this.Show();
@@ -47,11 +49,11 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(MessageBox.Show("bạn có thật sự muốn thoát chương trình", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)   //ấn nút tắt chương trình sẽ hiện thông báo "có thật sự muốn tắt"
+            if (MessageBox.Show("bạn có thật sự muốn thoát chương trình", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)   //ấn nút tắt chương trình sẽ hiện thông báo "có thật sự muốn tắt"
             {
                 e.Cancel = true;
             }
-              
+
         }
 
     }
