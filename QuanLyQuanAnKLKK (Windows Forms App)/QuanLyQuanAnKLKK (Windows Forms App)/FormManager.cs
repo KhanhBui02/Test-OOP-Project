@@ -15,8 +15,8 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
     {
         private Account loginAccount;
 
-        public Account LoginAccount
-        {
+        public Account LoginAccount 
+        { 
             get => loginAccount;
             set { loginAccount = value; ChangeAccount(loginAccount.Type); }
         }
@@ -25,7 +25,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         {
             InitializeComponent();
 
-            this.loginAccount = acc;
+            this.LoginAccount = acc;
         }
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -49,11 +49,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 
         void ChangeAccount(int type)
         {
-            if(type == 2)
-            {
-                adminToolStripMenuItem.Enabled = true;
-            }
-            //adminToolStripMenuItem.Enabled = type == 1;
+            adminToolStripMenuItem.Enabled = type == 1;
         }
     }
 }
