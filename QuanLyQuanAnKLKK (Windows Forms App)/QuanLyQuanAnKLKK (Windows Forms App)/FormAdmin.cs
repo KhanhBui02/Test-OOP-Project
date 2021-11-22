@@ -16,14 +16,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
     {
         public FormAdmin()
         {
-            InitializeComponent();
-            LoadAccountList();
-        }
-        void LoadAccountList()
-        {
-            string query = "exec USP_GetListAccountByUserName @userName";  
-  
-            dtgvAccount.DataSource = DataProvider.Instance.ExecuteQuery(query, new object[] { "thanhloi" });        //có thể sử dụng câu lệnh khác ko cần parameter ví dụ query="select * from Account"
+            InitializeComponent();        
         }
     }
 }

@@ -128,3 +128,15 @@ end
 go
 exec USP_GetListAccountByUserName @userName = N'thanhloi'
 
+select*
+from dbo.Account
+where  UserName = N'thanhloi' and MatKhau = N'12'
+go
+
+create proc USP_Login
+@userName nvarchar(100), @password nvarchar(100)
+as
+begin
+select* from dbo.Account where UserName = @userName and MatKhau = @password
+end
+go

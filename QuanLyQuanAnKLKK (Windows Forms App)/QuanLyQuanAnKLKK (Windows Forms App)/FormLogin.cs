@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyQuanAnKLKK__Windows_Forms_App_.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,10 +25,24 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 
         private void btLogin_Click(object sender, EventArgs e)  // khi ấn vào nút đăng nhập sẽ đi tới form quản lý bàn ăn và thanh toán
         {
-            FormManager  f =   new FormManager();           
-            this.Hide();                                    // khi show form quản lý bàn ăn và thanh toán sẽ tắt form đăng nhập
-            f.ShowDialog();                                
-            this.Show();
+            string userName = txtLogin.Text;
+            string password = txtPassWord.Text;
+            if(Login(userName, password))
+            {
+                FormManager f = new FormManager();
+                this.Hide();                                    // khi show form quản lý bàn ăn và thanh toán sẽ tắt form đăng nhập
+                f.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!");
+            }
+        }
+
+        bool Login(string userName, string password)
+        {
+            return AcountDAO.Instance.Login(userName, password);
         }
 
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
