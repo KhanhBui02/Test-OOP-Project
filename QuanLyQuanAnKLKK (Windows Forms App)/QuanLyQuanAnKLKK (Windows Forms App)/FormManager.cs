@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyQuanAnKLKK__Windows_Forms_App_.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,19 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 {
     public partial class FormManager : Form
     {
-        public FormManager()
+        private Account loginAccount;
+
+        public Account LoginAccount 
+        { 
+            get => loginAccount;
+            set { loginAccount = value; ChangeAccount(loginAccount.Type); }
+        }
+
+        public FormManager(Account acc)
         {
             InitializeComponent();
+
+            this.loginAccount = acc;
         }
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -34,6 +45,11 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             this.Hide();
             f.ShowDialog();                         //hiện form Admin
             this.Show();
+        }
+
+        void ChangeAccount(int type)
+        {
+            adminToolStripMenuItem.Enabled = type == 1;
         }
     }
 }

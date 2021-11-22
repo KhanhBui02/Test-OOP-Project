@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyQuanAnKLKK__Windows_Forms_App_.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -24,6 +25,18 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
             string query = "USP_Login @userName , @password";
             DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, password });
             return result.Rows.Count > 0;
+        }
+
+        public Account GetAccountByUserName(string userName)
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("Select * " +
+                "from account where userName = '" + userName + "'");
+            foreach(DataRow item in data.Rows)
+            {
+                return new Account(item);
+            }
+
+            return null;
         }
     }
 }

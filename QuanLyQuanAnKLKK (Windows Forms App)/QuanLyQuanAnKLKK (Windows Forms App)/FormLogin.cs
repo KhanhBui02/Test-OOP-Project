@@ -1,4 +1,5 @@
 ﻿using QuanLyQuanAnKLKK__Windows_Forms_App_.DAO;
+using QuanLyQuanAnKLKK__Windows_Forms_App_.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,8 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             string password = txtPassWord.Text;
             if(Login(userName, password))
             {
-                FormManager f = new FormManager();
+                Account loginAccount = AcountDAO.Instance.GetAccountByUserName(userName);
+                FormManager f = new FormManager(loginAccount);
                 this.Hide();                                    // khi show form quản lý bàn ăn và thanh toán sẽ tắt form đăng nhập
                 f.ShowDialog();
                 this.Show();
