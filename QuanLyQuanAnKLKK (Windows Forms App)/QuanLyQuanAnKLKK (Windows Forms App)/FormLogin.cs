@@ -30,7 +30,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             string password = txtPassWord.Text;
             if (Login(userName, password))
             {
-                Account loginAccount = AcountDAO.Instance.GetAccountByUserName(userName);
+                Account loginAccount = AccountDAO.Instance.GetAccountByUserName(userName);
                 FormManager f = new FormManager(loginAccount);
                 this.Hide();                                    // khi show form quản lý bàn ăn và thanh toán sẽ tắt form đăng nhập
                 f.ShowDialog();
@@ -44,7 +44,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 
         bool Login(string userName, string password)
         {
-            return AcountDAO.Instance.Login(userName, password);
+            return AccountDAO.Instance.Login(userName, password);
         }
 
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
