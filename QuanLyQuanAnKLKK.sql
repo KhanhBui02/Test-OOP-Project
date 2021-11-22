@@ -140,3 +140,6 @@ begin
 select* from dbo.Account where UserName = @userName and MatKhau = @password
 end
 go
+
+Select * from Account where UserName = 'trungkien'
+go
