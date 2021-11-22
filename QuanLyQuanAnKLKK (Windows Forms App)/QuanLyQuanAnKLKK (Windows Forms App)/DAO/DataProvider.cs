@@ -27,7 +27,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         }
         private DataProvider() { }
 
-        private string connectionSTR = @"Data Source=ADMINISTRATOR;Initial Catalog=QuanLyQuanAnKLKK;Integrated Security=True";
+        private string connectionSTR = @"Data Source=THANHLOI\THANHLOISERVER;Initial Catalog=QuanLyQuanAnKLKK;Integrated Security=True";
 
         //sử dụng các hàm dưới đây để truy vấn sql
         public DataTable ExecuteQuery(string query, object[] parameter = null)

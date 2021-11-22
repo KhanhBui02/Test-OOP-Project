@@ -1,4 +1,5 @@
-﻿using QuanLyQuanAnKLKK__Windows_Forms_App_.DTO;
+﻿using QuanLyQuanAnKLKK__Windows_Forms_App_.DAO;
+using QuanLyQuanAnKLKK__Windows_Forms_App_.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         public FormManager(Account acc)
         {
             InitializeComponent();
-
+            LoadTable();
             this.LoginAccount = acc;
         }
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,6 +51,24 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         void ChangeAccount(int type)
         {
             adminToolStripMenuItem.Enabled = type == 1;
+        }
+        void LoadTable()
+        {
+            List<Table> tablelist = TableDAO.Instance.LoadTableList();
+            foreach (Table item in tablelist)
+            {
+                Button btn = new Button() { Width = TableDAO.TableWidth, Height = TableDAO.TableHeight };
+                btn.Text = item.Name + Environment.NewLine + item.Status;
+                switch (item.Status)
+                {
+                    case "Trống":
+                        btn.BackColor = Color.Aqua; break;
+                    default:
+                        btn.BackColor = Color.Red; break;
+                }
+                flpTable.Controls.Add(btn);
+            }
+
         }
     }
 }
