@@ -15,20 +15,22 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         public static TableDAO Instance
         {
             get { if (instance == null) instance = new TableDAO(); return TableDAO.instance; }
-            set { TableDAO.instance = value; }
+            private set { TableDAO.instance = value; }
         }
         private TableDAO() { }
 
-        public static int TableWidth = 90;
-        public static int TableHeight = 90;
+        public static int TableWidth = 100;
+        public static int TableHeight = 100;
         public List<Table> LoadTableList()
         {
             List<Table> tablelist = new List<Table>();
 
             DataTable data = DataProvider.Instance.ExecuteQuery("USP_GetTableList");
+
             foreach (DataRow item in data.Rows)
             {
                 Table table = new Table(item);
+
                 tablelist.Add(table);
             }
             return tablelist;

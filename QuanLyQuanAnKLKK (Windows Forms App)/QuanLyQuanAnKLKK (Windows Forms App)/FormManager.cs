@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Globalization;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         {
             InitializeComponent();
             LoadTable();
+            LoadCategory();
             this.LoginAccount = acc;
         }
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,23 +54,144 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         {
             adminToolStripMenuItem.Enabled = type == 1;
         }
+
+        //tải FoodCategory
+        void LoadCategory()
+        {
+            List<FoodCategory> listCategory = FoodCategoryDAO.Instance.GetListCategory();
+            cbCategory.DataSource = listCategory;
+            cbCategory.DisplayMember = "NameCategory";
+        }
+
+        //tải Food theo Category 
+        void LoadFoodListByCategoryID(int id)
+        {
+            List<Food> listfood = FoodDAO.Instance.GetFoodByCategoryID(id);
+            cbFood.DataSource = listfood;
+            cbFood.DisplayMember = "NameFood";
+        }
+        //tải thông tin bàn
         void LoadTable()
         {
+            
+            flpTable.Controls.Clear();//clear danh sách bàn cũ mỗi khi load lại
             List<Table> tablelist = TableDAO.Instance.LoadTableList();
             foreach (Table item in tablelist)
             {
-                Button btn = new Button() { Width = TableDAO.TableWidth, Height = TableDAO.TableHeight };
-                btn.Text = item.Name + Environment.NewLine + item.Status;
+                //định nghĩa thông tin bàn thành button 
+                Button btn = new Button() 
+                { 
+                    Width = TableDAO.TableWidth, //chiều cao , chiều rộng button
+                    Height = TableDAO.TableHeight 
+                };
+                btn.Text = item.Name/*tên bàn*/ + Environment.NewLine /*xuống dòng*/ + item.Status/*tình trạng*/;
+                btn.Click += btn_Click;
+                btn.Tag = item;
+
                 switch (item.Status)
-                {
+                  {
                     case "Trống":
                         btn.BackColor = Color.Aqua; break;
                     default:
-                        btn.BackColor = Color.Red; break;
+                        btn.BackColor = Color.Pink; break;
                 }
                 flpTable.Controls.Add(btn);
             }
 
+        }
+
+        void ShowBill(int id)
+        {
+            lsvBill.Items.Clear();//clear list view bill mỗi khi load lại
+            List<QuanLyQuanAnKLKK__Windows_Forms_App_.DTO.Menu> listBillInfo = MenuDAO.Instance.GetListMenuByTable(id);
+
+            float totalPrice = 0;//tổng tiền
+            foreach (QuanLyQuanAnKLKK__Windows_Forms_App_.DTO.Menu item in listBillInfo) 
+            {
+                ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
+                lsvItem.SubItems.Add(item.Count.ToString());
+                lsvItem.SubItems.Add(item.Price.ToString());
+                lsvItem.SubItems.Add(item.TotalPrice.ToString());
+                lsvBill.Items.Add(lsvItem); //thêm item vào các subitem ở trên vào list view bill
+                totalPrice += item.TotalPrice;//tính tổng tiền
+            }
+            CultureInfo culture = new CultureInfo("vi-VN");//đổi sang định dạng tiền VNĐ
+            txbTotalPrice.Text = totalPrice.ToString("c",culture);
+        }
+
+        //button click vào bàn
+        void btn_Click(object sender, EventArgs e)
+        {
+            int tableID = ((sender as Button).Tag as Table).ID; //lấy ID bàn từ button
+            lsvBill.Tag = (sender as Button).Tag; //gắn tag cho list view bill từ button
+            ShowBill(tableID);//hiện bill theo ID bàn
+        }
+
+        private void FormManager_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btDiscount_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        //Combobox FoodCategory + Food
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = 0; 
+            ComboBox cb = sender as ComboBox; 
+
+            if (cb.SelectedItem == null)
+                return;
+
+            FoodCategory selected = cb.SelectedItem as FoodCategory;
+
+            id = selected.IdCategory;
+
+            LoadFoodListByCategoryID(id); //tải food sau khi chọn Category
+        }
+
+        private void btAddFood_Click(object sender, EventArgs e)
+        {
+            lsvBill.Items.Clear(); // clear list view khi thêm món
+
+            Table table = lsvBill.Tag as Table; //lấy id bàn
+            int IDBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID); //lấy id của bill chưa check out
+            int IDFood = (cbFood.SelectedItem as Food).IdFood; //IDFood nhập vào là IDFood từ Combobox
+            int CountFood = (int)nmFoodCount.Value; //lấy số lượng từ bảng đếm
+
+            if(IDBill == -1) //nếu bàn đã check out => nhập bill và billinfo
+            {
+                BillDAO.Instance.InsertBill(table.ID);
+                BillInfoDAO.Instance.InsertBillInfo(BillDAO.Instance.GetMaxIDBill(),IDFood,CountFood);
+            }
+            else //chỉ cần update billinfo
+            {
+                BillInfoDAO.Instance.InsertBillInfo(IDBill, IDFood, CountFood);
+            }
+
+            LoadTable(); // sau khi thêm món tải lại bàn
+        }
+
+        //button thanh toán
+        private void btThanhToan_Click(object sender, EventArgs e)
+        {
+            Table table = lsvBill.Tag as Table; //gắn tag cho list view bill
+            int IDBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID); //lấy id của bill chưa check out
+            //dialog 
+            if(MessageBox.Show("Bạn có chắc thanh toán hóa đơn cho "+ table.Name ,"Thông báo",MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                BillDAO.Instance.CheckOut(IDBill);
+                ShowBill(table.ID); //show list bill đã xóa
+                LoadTable(); //load lại bàn
+            }
         }
     }
 }

@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
 {
-    class Food
+    public class Food
     {
         private int idFood;
-        private String nameFood;
+        private string nameFood;
         private int idCategory;
         private float price;
 
-        public Food(int idFood, String nameFood, int idCategory, float price)
+        public Food(int idFood, string nameFood, int idCategory, float price)
         {
-            this.idFood = idFood;
-            this.nameFood = nameFood;
-            this.idCategory = idCategory;
-            this.price = price;
+            this.IdFood = idFood;
+            this.NameFood = nameFood;
+            this.IdCategory = idCategory;
+            this.Price = price;
         }
 
         public Food(DataRow row)
         {
-            this.idFood = (int)row["idFood"];
-            this.nameFood = row["nameFood"].ToString();
-            this.idCategory = (int)row["idCategory"];
-            this.price = (float)Convert.ToDouble(row["price"].ToString());
+            this.idFood = (int)row["IDFood"];
+            this.nameFood = row["NameFood"].ToString();
+            this.idCategory = (int)row["IDCategory"];
+            this.price = (float)Convert.ToDouble(row["Price"].ToString());
         }
 
         public int IdFood
@@ -36,7 +36,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
             set { idFood = value; }
         }
 
-        public String NameFood
+        public string NameFood
         {
             get { return nameFood; }
             set { nameFood = value; }
