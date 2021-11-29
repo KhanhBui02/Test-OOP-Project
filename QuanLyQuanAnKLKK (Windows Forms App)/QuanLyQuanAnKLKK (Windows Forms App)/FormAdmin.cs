@@ -22,9 +22,9 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         #region method
         void LoadAccountList()
         {
-            string query = "exec USP_GetListAccountByUserName @userName";  
+            string query = "select * from Account";  
   
-            dtgvAccount.DataSource = DataProvider.Instance.ExecuteQuery(query, new object[] { "thanhloi" });        //có thể sử dụng câu lệnh khác ko cần parameter ví dụ query="select * from Account"
+            dtgvAccount.DataSource = DataProvider.Instance.ExecuteQuery(query);        //có thể sử dụng câu lệnh khác ko cần parameter ví dụ query="select * from Account"
         }
         void LoadListFood(){
             dtgvFood.DataSource = FoodDAO.Instance.GetListFood();

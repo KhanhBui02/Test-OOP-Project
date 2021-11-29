@@ -183,7 +183,7 @@
             this.AcceptButton = this.btLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btOut;
             this.ClientSize = new System.Drawing.Size(704, 191);
             this.Controls.Add(this.panel4);

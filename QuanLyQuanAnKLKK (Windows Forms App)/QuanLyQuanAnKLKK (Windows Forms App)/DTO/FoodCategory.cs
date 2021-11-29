@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
 {
-    class FoodCategory
+    public class FoodCategory
     {
-        private int idCategory;
-        private String nameCategory;
-
-        public FoodCategory(int idCategory, String nameCategory)
+      
+        public FoodCategory(int idCategory, string nameCategory)
         {
             this.idCategory = idCategory;
             this.nameCategory = nameCategory;
@@ -20,17 +18,19 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
 
         public FoodCategory(DataRow row)
         {
-            this.idCategory = (int)row["idCategory"];
-            this.nameCategory = row["nameCategory"].ToString();
+            this.IdCategory = (int)row["idCategory"];
+            this.NameCategory = row["nameCategory"].ToString();
         }
 
+        private int idCategory;
         public int IdCategory
         {
             get { return idCategory; }
             set { idCategory = value; }
         }
 
-        public String NameCategory
+        private string nameCategory;
+        public string NameCategory
         {
             get { return nameCategory; }
             set { nameCategory = value; }

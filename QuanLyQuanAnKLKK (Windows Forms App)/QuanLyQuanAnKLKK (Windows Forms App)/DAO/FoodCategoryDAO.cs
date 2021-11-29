@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
 {
-    class FoodCategoryDAO
+    public class FoodCategoryDAO
     {
         private static FoodCategoryDAO instance;
 
@@ -19,17 +19,18 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
                 if (instance == null) instance = new FoodCategoryDAO();
                 return FoodCategoryDAO.instance;
             }
-            set { FoodCategoryDAO.instance = value; }
+            private set { FoodCategoryDAO.instance = value; }
         }
         private FoodCategoryDAO()
         {
+
         }
 
         public List<FoodCategory> GetListCategory()
         {
             List<FoodCategory> list = new List<FoodCategory>();
 
-            String query = "select * from FoodCategory";
+            string query = "select * from FoodCategory";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 

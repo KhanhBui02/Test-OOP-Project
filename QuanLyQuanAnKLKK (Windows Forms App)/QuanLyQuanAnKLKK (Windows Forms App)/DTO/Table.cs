@@ -15,11 +15,11 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
             this.Name = name;
             this.Status = status;
         }
-        public Table(DataRow Row)
+        public Table(DataRow row)
         {
-            this.ID = (int)Row["IDTable"];
-            this.Name = Row["TENBAN"].ToString();
-            this.Status = Row["TinhTrang"].ToString();
+            this.ID = (int)row["IDTable"];
+            this.Name = row["TENBAN"].ToString();
+            this.Status = row["TinhTrang"].ToString();
         }
         private int iD;
         public int ID

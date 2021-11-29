@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
 {
-    class FoodDAO
+    public class FoodDAO
     {
         private static FoodDAO instance;
 
@@ -23,12 +23,13 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         }
         private FoodDAO()
         {
+
         }
         public List<Food> GetFoodByCategoryID(int id)
         {
             List<Food> list = new List<Food>();
 
-            String query = "";
+            string query = "SELECT * FROM FOOD WHERE IDCategory = " + id;
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -44,7 +45,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         {
             List<Food> list = new List<Food>();
 
-            String query = "select * from Food";
+            string query = "select * from Food";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -55,9 +56,9 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
             }
             return list;
         }
-        public bool InsertFood(String name, int idCategory, float price)
+        public bool InsertFood(string name, int idCategory, float price)
         {
-            String query = String.Format("insert Food (NameFood, IDCategory, Price) values (N'{0}',{1},{2})", name, idCategory, price);
+            string query = String.Format("insert Food (NameFood, IDCategory, Price) values (N'{0}',{1},{2})", name, idCategory, price);
             int result = (int)DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
