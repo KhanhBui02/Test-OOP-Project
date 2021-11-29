@@ -429,3 +429,32 @@ END
 GO
 
 select * from Bill
+go
+
+--áaasd
+--asdasd
+--asdasdas
+--ádasdasd
+
+---B.Khanh đã thêm phần này
+create proc USP_UpdateAccount
+@userName nvarchar(100), @displayName nvarchar(100), @matKhau nvarchar(100), @matKhauMoi nvarchar(100)
+as
+begin
+	declare @dungMatKhau int = 0
+
+	select @dungMatKhau = count(*) from dbo.Account where  UserName = @userName and MatKhau = @matKhau
+
+	if (@dungMatKhau = 1)
+	begin
+		if (@matKhauMoi = NULL or @matKhauMoi='')
+		begin
+			update dbo.Account set DisplayName = @displayName where UserName = @userName
+		end
+		else
+			update dbo.Account set DisplayName = @displayName, MatKhau = @matKhauMoi where UserName = @userName
+	end
+end
+go
+--end
+select * from Bill

@@ -15,9 +15,6 @@ C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Wi
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.CoreCompileInputs.cache
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 E:\Study\Năm 2\OOP\Đồ án\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe.config
 E:\Study\Năm 2\OOP\Đồ án\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
 E:\Study\Năm 2\OOP\Đồ án\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
@@ -31,7 +28,6 @@ E:\Study\Năm 2\OOP\Đồ án\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\Q
 E:\Study\Năm 2\OOP\Đồ án\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.CoreCompileInputs.cache
 E:\Study\Năm 2\OOP\Đồ án\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
 E:\Study\Năm 2\OOP\Đồ án\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
-=======
 E:\DKP1200\HKI-2021\LTHDT\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe.config
 E:\DKP1200\HKI-2021\LTHDT\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
 E:\DKP1200\HKI-2021\LTHDT\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
@@ -45,4 +41,3 @@ E:\DKP1200\HKI-2021\LTHDT\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanL
 E:\DKP1200\HKI-2021\LTHDT\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.Properties.Resources.resources
 E:\DKP1200\HKI-2021\LTHDT\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.GenerateResource.Cache
 >>>>>>> 54f418ef93350425d8e5f4ec7c95868fb854d092
->>>>>>> fa2b7c8abfd43b2820b37002bb9b104d99819ae2
