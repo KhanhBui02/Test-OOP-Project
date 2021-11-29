@@ -128,6 +128,19 @@ end
 go
 exec USP_GetListAccountByUserName @userName = N'thanhloi'
 
+create proc USP_GetTableList
+as select * from TableFood
+go
+
+insert TableFood(TENBAN,TinhTrang)
+values (N'Bàn 1',N'Trống')
+insert TableFood(TENBAN,TinhTrang)
+values (N'Bàn 2',N'Có người')
+insert TableFood(TENBAN,TinhTrang)
+values (N'Bàn 3',N'Trống')
+go
+
+
 select*
 from dbo.Account
 where  UserName = N'thanhloi' and MatKhau = N'12'

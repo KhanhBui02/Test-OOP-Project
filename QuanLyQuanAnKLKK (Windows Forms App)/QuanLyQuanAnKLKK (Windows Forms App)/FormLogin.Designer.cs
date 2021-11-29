@@ -105,6 +105,7 @@
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.Size = new System.Drawing.Size(176, 26);
             this.txtPassWord.TabIndex = 1;
+            this.txtPassWord.Text = "12";
             this.txtPassWord.UseSystemPasswordChar = true;
             this.txtPassWord.UseWaitCursor = true;
             // 
@@ -138,6 +139,7 @@
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(176, 26);
             this.txtLogin.TabIndex = 1;
+            this.txtLogin.Text = "thanhloi";
             this.txtLogin.UseWaitCursor = true;
             // 
             // labelLogin
