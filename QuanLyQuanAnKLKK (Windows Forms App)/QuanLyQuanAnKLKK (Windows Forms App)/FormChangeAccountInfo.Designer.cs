@@ -224,6 +224,7 @@
             this.btUpdate.TabIndex = 7;
             this.btUpdate.Text = "Cập nhật";
             this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
             // btOtut
             // 

@@ -37,14 +37,19 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormChangeAccountInfo f = new FormChangeAccountInfo();
-            f.ShowDialog();                                                 //hiện form thay đổi thông tin tài khoản
+            FormChangeAccountInfo f = new FormChangeAccountInfo(LoginAccount);
+            f.UpdateAccount += f_UpdateAccountEvent;
+            f.ShowDialog();                      //hiện form thay đổi thông tin tài khoản
 
         }
-
+        void f_UpdateAccountEvent(object sender, AccountEvent e)
+        {
+            thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản (" + e.Acc.DisplayName + ")";
+        }
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormAdmin f = new FormAdmin();
+            f.loginAccount = LoginAccount;
             this.Hide();
             f.ShowDialog();                         //hiện form Admin
             this.Show();
@@ -53,6 +58,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         void ChangeAccount(int type)
         {
             adminToolStripMenuItem.Enabled = type == 1;
+            thôngTinTàiKhoảnToolStripMenuItem.Text += " (" + LoginAccount.DisplayName + ")";
         }
 
         //tải FoodCategory

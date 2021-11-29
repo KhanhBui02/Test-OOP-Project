@@ -72,13 +72,12 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.btSetPassword = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
             this.lbStatus = new System.Windows.Forms.Label();
             this.panel24 = new System.Windows.Forms.Panel();
-            this.txtDisplayName = new System.Windows.Forms.TextBox();
+            this.txbDisplayName = new System.Windows.Forms.TextBox();
             this.lbDisplayName = new System.Windows.Forms.Label();
             this.panel25 = new System.Windows.Forms.Panel();
-            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txbUserName = new System.Windows.Forms.TextBox();
             this.lbUsername = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
@@ -114,6 +113,7 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.nudAccountType = new System.Windows.Forms.NumericUpDown();
             this.TabcAdmin.SuspendLayout();
             this.TabpFood.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -153,6 +153,7 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).BeginInit();
             this.SuspendLayout();
             // 
             // TabcAdmin
@@ -580,24 +581,16 @@
             this.btSetPassword.TabIndex = 4;
             this.btSetPassword.Text = "Đặt lại mật khẩu";
             this.btSetPassword.UseVisualStyleBackColor = true;
+            this.btSetPassword.Click += new System.EventHandler(this.btSetPassword_Click);
             // 
             // panel26
             // 
-            this.panel26.Controls.Add(this.cbStatus);
+            this.panel26.Controls.Add(this.nudAccountType);
             this.panel26.Controls.Add(this.lbStatus);
             this.panel26.Location = new System.Drawing.Point(6, 119);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(270, 42);
             this.panel26.TabIndex = 3;
-            // 
-            // cbStatus
-            // 
-            this.cbStatus.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(160, 10);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(95, 24);
-            this.cbStatus.TabIndex = 1;
             // 
             // lbStatus
             // 
@@ -611,20 +604,20 @@
             // 
             // panel24
             // 
-            this.panel24.Controls.Add(this.txtDisplayName);
+            this.panel24.Controls.Add(this.txbDisplayName);
             this.panel24.Controls.Add(this.lbDisplayName);
             this.panel24.Location = new System.Drawing.Point(6, 71);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(270, 42);
             this.panel24.TabIndex = 2;
             // 
-            // txtDisplayName
+            // txbDisplayName
             // 
-            this.txtDisplayName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDisplayName.Location = new System.Drawing.Point(160, 9);
-            this.txtDisplayName.Name = "txtDisplayName";
-            this.txtDisplayName.Size = new System.Drawing.Size(95, 22);
-            this.txtDisplayName.TabIndex = 1;
+            this.txbDisplayName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbDisplayName.Location = new System.Drawing.Point(160, 9);
+            this.txbDisplayName.Name = "txbDisplayName";
+            this.txbDisplayName.Size = new System.Drawing.Size(95, 22);
+            this.txbDisplayName.TabIndex = 1;
             // 
             // lbDisplayName
             // 
@@ -638,21 +631,20 @@
             // 
             // panel25
             // 
-            this.panel25.Controls.Add(this.txtUserName);
+            this.panel25.Controls.Add(this.txbUserName);
             this.panel25.Controls.Add(this.lbUsername);
             this.panel25.Location = new System.Drawing.Point(6, 23);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(270, 42);
             this.panel25.TabIndex = 1;
             // 
-            // txtUserName
+            // txbUserName
             // 
-            this.txtUserName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(160, 9);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.ReadOnly = true;
-            this.txtUserName.Size = new System.Drawing.Size(95, 22);
-            this.txtUserName.TabIndex = 1;
+            this.txbUserName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbUserName.Location = new System.Drawing.Point(160, 9);
+            this.txbUserName.Name = "txbUserName";
+            this.txbUserName.Size = new System.Drawing.Size(95, 22);
+            this.txbUserName.TabIndex = 1;
             // 
             // lbUsername
             // 
@@ -679,6 +671,7 @@
             this.dtgvAccount.Name = "dtgvAccount";
             this.dtgvAccount.Size = new System.Drawing.Size(417, 342);
             this.dtgvAccount.TabIndex = 0;
+            this.dtgvAccount.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellContentClick);
             // 
             // panel14
             // 
@@ -700,6 +693,7 @@
             this.btDeleteAccount.TabIndex = 3;
             this.btDeleteAccount.Text = "Xoá";
             this.btDeleteAccount.UseVisualStyleBackColor = true;
+            this.btDeleteAccount.Click += new System.EventHandler(this.btDeleteAccount_Click);
             // 
             // btEditAccount
             // 
@@ -710,6 +704,7 @@
             this.btEditAccount.TabIndex = 2;
             this.btEditAccount.Text = "Sửa";
             this.btEditAccount.UseVisualStyleBackColor = true;
+            this.btEditAccount.Click += new System.EventHandler(this.btEditAccount_Click);
             // 
             // btViewAccount
             // 
@@ -720,6 +715,7 @@
             this.btViewAccount.TabIndex = 1;
             this.btViewAccount.Text = "Xem";
             this.btViewAccount.UseVisualStyleBackColor = true;
+            this.btViewAccount.Click += new System.EventHandler(this.btViewAccount_Click);
             // 
             // btAddAccount
             // 
@@ -730,6 +726,7 @@
             this.btAddAccount.TabIndex = 0;
             this.btAddAccount.Text = "Thêm";
             this.btAddAccount.UseVisualStyleBackColor = true;
+            this.btAddAccount.Click += new System.EventHandler(this.btAddAccount_Click);
             // 
             // TabpTable
             // 
@@ -988,6 +985,18 @@
             this.dataGridView1.Size = new System.Drawing.Size(740, 358);
             this.dataGridView1.TabIndex = 0;
             // 
+            // nudAccountType
+            // 
+            this.nudAccountType.Location = new System.Drawing.Point(160, 11);
+            this.nudAccountType.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudAccountType.Name = "nudAccountType";
+            this.nudAccountType.Size = new System.Drawing.Size(36, 20);
+            this.nudAccountType.TabIndex = 5;
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1051,6 +1060,7 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1110,13 +1120,12 @@
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Button btSetPassword;
         private System.Windows.Forms.Panel panel26;
-        private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Panel panel24;
-        private System.Windows.Forms.TextBox txtDisplayName;
+        private System.Windows.Forms.TextBox txbDisplayName;
         private System.Windows.Forms.Label lbDisplayName;
         private System.Windows.Forms.Panel panel25;
-        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.TextBox txbUserName;
         private System.Windows.Forms.Label lbUsername;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.DataGridView dtgvAccount;
@@ -1143,5 +1152,6 @@
         private System.Windows.Forms.ComboBox cbStatusTable;
         private System.Windows.Forms.Label lbStatusTable;
         private System.Windows.Forms.ComboBox cbxFoodCategory;
+        private System.Windows.Forms.NumericUpDown nudAccountType;
     }
 }

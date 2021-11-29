@@ -108,6 +108,7 @@
             this.txtPassWord.Text = "12";
             this.txtPassWord.UseSystemPasswordChar = true;
             this.txtPassWord.UseWaitCursor = true;
+            this.txtPassWord.TextChanged += new System.EventHandler(this.txtPassWord_TextChanged);
             // 
             // labelPassWord
             // 
