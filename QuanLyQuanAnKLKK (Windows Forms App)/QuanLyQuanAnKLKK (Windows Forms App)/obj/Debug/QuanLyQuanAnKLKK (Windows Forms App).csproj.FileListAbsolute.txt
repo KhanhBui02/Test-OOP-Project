@@ -1,0 +1,14 @@
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe.config
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.AssemblyReference.cache
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.SuggestedBindingRedirects.cache
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormAdmin.resources
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormLogin.resources
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormManager.resources
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormChangeAccountInfo.resources
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.Properties.Resources.resources
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.GenerateResource.cache
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.CoreCompileInputs.cache
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
+C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
