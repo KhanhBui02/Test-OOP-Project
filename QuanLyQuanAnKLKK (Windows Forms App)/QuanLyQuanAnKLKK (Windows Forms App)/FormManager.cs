@@ -133,20 +133,6 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             ShowBill(tableID);//hiện bill theo ID bàn
         }
 
-        private void FormManager_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btDiscount_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         //Combobox FoodCategory + Food
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -189,12 +175,15 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         //button thanh toán
         private void btThanhToan_Click(object sender, EventArgs e)
         {
-            Table table = lsvBill.Tag as Table; //gắn tag cho list view bill
+            Table table = lsvBill.Tag as Table;  //gắn tag cho list view bill
             int IDBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID); //lấy id của bill chưa check out
+            int discount = (int)nmDiscount.Value;
+            double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0].Replace(".", ""));    //lấy tổng tiền
+            double finalPrice = totalPrice - (totalPrice / 100) * discount;     //tính tổng tiền sau khi giảm giá
             //dialog 
-            if(MessageBox.Show("Bạn có chắc thanh toán hóa đơn cho "+ table.Name ,"Thông báo",MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show(String.Format("Bạn có chắc thanh toán hóa đơn cho {0}\nTổng tiền: {1} Đồng\nGiảm giá: {2}%\nTổng tiền sau khi giảm giá: {3} Đồng", table.Name,totalPrice,discount,finalPrice) ,"Thông báo",MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                BillDAO.Instance.CheckOut(IDBill);
+                BillDAO.Instance.CheckOut(IDBill,discount);
                 ShowBill(table.ID); //show list bill đã xóa
                 LoadTable(); //load lại bàn
             }

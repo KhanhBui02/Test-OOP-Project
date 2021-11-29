@@ -39,7 +39,6 @@
             this.txbTotalPrice = new System.Windows.Forms.TextBox();
             this.cbSwapTable = new System.Windows.Forms.ComboBox();
             this.nmDiscount = new System.Windows.Forms.NumericUpDown();
-            this.btDiscount = new System.Windows.Forms.Button();
             this.btSwapTable = new System.Windows.Forms.Button();
             this.btThanhToan = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -53,6 +52,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbDiscount = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmFoodCount)).BeginInit();
@@ -78,7 +78,7 @@
             // 
             this.adminToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.adminToolStripMenuItem.Text = "Admin";
             this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
@@ -89,20 +89,20 @@
             this.đăngXuấtToolStripMenuItem});
             this.thôngTinTàiKhoảnToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thôngTinTàiKhoảnToolStripMenuItem.Name = "thôngTinTàiKhoảnToolStripMenuItem";
-            this.thôngTinTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(130, 20);
+            this.thôngTinTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(129, 20);
             this.thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản";
             // 
             // thôngTinCáNhânToolStripMenuItem
             // 
             this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
-            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.thôngTinCáNhânToolStripMenuItem.Text = "Thông tin cá nhân";
             this.thôngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
@@ -137,10 +137,10 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.lbDiscount);
             this.panel3.Controls.Add(this.txbTotalPrice);
             this.panel3.Controls.Add(this.cbSwapTable);
             this.panel3.Controls.Add(this.nmDiscount);
-            this.panel3.Controls.Add(this.btDiscount);
             this.panel3.Controls.Add(this.btSwapTable);
             this.panel3.Controls.Add(this.btThanhToan);
             this.panel3.Location = new System.Drawing.Point(18, 518);
@@ -152,14 +152,14 @@
             // 
             this.txbTotalPrice.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbTotalPrice.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txbTotalPrice.Location = new System.Drawing.Point(183, 20);
+            this.txbTotalPrice.Location = new System.Drawing.Point(207, 20);
             this.txbTotalPrice.Name = "txbTotalPrice";
             this.txbTotalPrice.ReadOnly = true;
-            this.txbTotalPrice.Size = new System.Drawing.Size(156, 26);
+            this.txbTotalPrice.Size = new System.Drawing.Size(132, 26);
             this.txbTotalPrice.TabIndex = 7;
             this.txbTotalPrice.Text = "0";
             this.txbTotalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txbTotalPrice.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+
             // 
             // cbSwapTable
             // 
@@ -176,17 +176,6 @@
             this.nmDiscount.Size = new System.Drawing.Size(89, 26);
             this.nmDiscount.TabIndex = 6;
             this.nmDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btDiscount
-            // 
-            this.btDiscount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDiscount.Location = new System.Drawing.Point(92, 1);
-            this.btDiscount.Name = "btDiscount";
-            this.btDiscount.Size = new System.Drawing.Size(89, 32);
-            this.btDiscount.TabIndex = 5;
-            this.btDiscount.Text = "Giảm giá";
-            this.btDiscount.UseVisualStyleBackColor = true;
-            this.btDiscount.Click += new System.EventHandler(this.btDiscount_Click);
             // 
             // btSwapTable
             // 
@@ -299,6 +288,16 @@
             this.flpTable.Size = new System.Drawing.Size(427, 586);
             this.flpTable.TabIndex = 2;
             // 
+            // lbDiscount
+            // 
+            this.lbDiscount.AutoSize = true;
+            this.lbDiscount.Location = new System.Drawing.Point(93, 14);
+            this.lbDiscount.Name = "lbDiscount";
+            this.lbDiscount.Size = new System.Drawing.Size(76, 18);
+            this.lbDiscount.TabIndex = 8;
+            this.lbDiscount.Text = "Giảm giá:";
+
+            // 
             // FormManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -314,7 +313,6 @@
             this.Name = "FormManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phần mềm quản lý quán ăn KLKK";
-            this.Load += new System.EventHandler(this.FormManager_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -347,7 +345,6 @@
         private System.Windows.Forms.Button btAddFood;
         private System.Windows.Forms.ComboBox cbSwapTable;
         private System.Windows.Forms.NumericUpDown nmDiscount;
-        private System.Windows.Forms.Button btDiscount;
         private System.Windows.Forms.Button btSwapTable;
         private System.Windows.Forms.Button btThanhToan;
         private System.Windows.Forms.FlowLayoutPanel flpTable;
@@ -356,5 +353,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.TextBox txbTotalPrice;
+        private System.Windows.Forms.Label lbDiscount;
     }
 }

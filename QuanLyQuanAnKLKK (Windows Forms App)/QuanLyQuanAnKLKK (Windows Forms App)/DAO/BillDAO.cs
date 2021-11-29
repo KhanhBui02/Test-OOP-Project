@@ -40,9 +40,9 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         }
 
         // update lại tình trạng bill
-        public void CheckOut(int id)
+        public void CheckOut(int id,int discount)
         {
-            string query = "UPDATE Bill SET DateCheckOut = GETDATE(), TinhTrang = 1 WHERE IDBill =" + id;  
+            string query = "UPDATE Bill SET DateCheckOut = GETDATE(), TinhTrang = 1, "+"discount = "+ discount +" WHERE IDBill = " + id;  
             DataProvider.Instance.ExecuteNonQuery(query);
         }
 
