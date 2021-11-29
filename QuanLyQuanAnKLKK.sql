@@ -58,7 +58,7 @@ create table Bill
 (
 	IDBill int identity primary key,					--ID thanh toán
 	DateCheckIn date not null default getdate(),		--ngày vào
-	DateChekOut date,									--ngày ra
+	DateCheckOut date,									--ngày ra
 	IDTable int not null,								--ID của bàn
 	TinhTrang int not null default 0 ,					--1: đã thanh toán || 0:chưa thanh toán
 
@@ -71,7 +71,7 @@ create table BillInfo
 (
 	IDBillInfo int identity primary key,		--ID 
 	IDBill int not null,						--ID thanh toán
-	idFood int not null,						--ID món ăn
+	IDFood int not null,						--ID món ăn
 	CountFood int not null default 0			--số lượng món ăn
 
 	foreign key (IDBill) references Bill(IDbill),	--khoá ngoại IDBill tới khoá chính IDBill bảng Bill
@@ -91,54 +91,72 @@ BEGIN
 	INSERT TableFood (TENBAN) VALUES (N'Bàn '+ CAST(@i AS nvarchar(100)))
 	SET @i = @i+1
 END
+go
 
 --Thêm Category
 SELECT * FROM FoodCategory
 INSERT FoodCategory(NameCategory)
 VALUES (N'Hải sản')
+go
 INSERT FoodCategory(NameCategory)
 VALUES (N'Gà')
+go
 INSERT FoodCategory(NameCategory)
 VALUES (N'Bò')
+go
 INSERT FoodCategory(NameCategory)
 VALUES (N'Mì')
+go
 INSERT FoodCategory(NameCategory)
 VALUES (N'Nước giải khát')
+go
 
 --Thêm món ăn
 SELECT * FROM Food
 group by IDCategory
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Tôm hấp bia',1,120000)
+go
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Mực nướng sa tế',1,180000)
+go
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Cua biển rang muối',1,100000)
+go
 --
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Bò lúc lắc',2,80000)
+go
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Bò né',2,80000)
+go
 --
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Gà chiên nước mắm',3,80000)
+go
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Gà chiên giòn',3,70000)
+go
 --
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Mì xào giòn',4,80000)
+go
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Mì xào hải sản',4,120000)
+go
 
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Pepsi',5,12000)
+go
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'7 UP',5,12000)
+go
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Bia',5,15000)
+go
 
 --Thêm bill
-INSERT Bill(DateCheckIn,DateChekOut,IDTable,TinhTrang)
+INSERT Bill(DateCheckIn,DateCheckOut,IDTable,TinhTrang)
 VALUES 
 (
 	GETDATE() ,
@@ -146,7 +164,8 @@ VALUES
 	1,
 	0
 )
-INSERT Bill(DateCheckIn,DateChekOut,IDTable,TinhTrang)
+go
+INSERT Bill(DateCheckIn,DateCheckOut,IDTable,TinhTrang)
 VALUES 
 (
 	GETDATE() ,
@@ -154,8 +173,8 @@ VALUES
 	2,
 	0
 )
-
-INSERT Bill(DateCheckIn,DateChekOut,IDTable,TinhTrang)
+go
+INSERT Bill(DateCheckIn,DateCheckOut,IDTable,TinhTrang)
 VALUES 
 (
 	GETDATE() ,
@@ -163,7 +182,8 @@ VALUES
 	2,
 	1
 )
-INSERT Bill(DateCheckIn,DateChekOut,IDTable,TinhTrang)
+go
+INSERT Bill(DateCheckIn,DateCheckOut,IDTable,TinhTrang)
 VALUES 
 (
 	GETDATE() ,
@@ -171,43 +191,47 @@ VALUES
 	3,
 	0
 )
+go
 SELECT * FROM Bill
 SELECT MAX(IDBill) FROM Bill
 
 --THÊM BillInfo
-INSERT BillInfo(IDBill,idFood,CountFood)
+INSERT BillInfo(IDBill,IDFood,CountFood)
 VALUES
 (	1,
 	1,
 	2
 )
-
-INSERT BillInfo(IDBill,idFood,CountFood)
+go
+INSERT BillInfo(IDBill,IDFood,CountFood)
 VALUES
 (	1,
 	3,
 	4
 )
-INSERT BillInfo(IDBill,idFood,CountFood)
+go
+INSERT BillInfo(IDBill,IDFood,CountFood)
 VALUES
 (	1,
 	5,
 	2
 )
-INSERT BillInfo(IDBill,idFood,CountFood)
+go
+INSERT BillInfo(IDBill,IDFood,CountFood)
 VALUES
 (	2,
 	6,
 	2
 )
-INSERT BillInfo(IDBill,idFood,CountFood)
+go
+INSERT BillInfo(IDBill,IDFood,CountFood)
 VALUES
 (	3,
 	5,
 	2
 )
-
-
+go
+SELECT * FROM BillInfo
 
 --Tạo proc thêm bill
 CREATE PROC USP_InsertBill
@@ -239,7 +263,9 @@ USP_GetTableList
 
 --Tạo proc billinfo
 DELETE Bill
-ALTER PROC USP_InsertBillInfor
+go
+
+CREATE PROC USP_InsertBillInfor 
 @IDBill INT, @idFood INT, @CountFood INT
 AS
 BEGIN
@@ -247,15 +273,15 @@ BEGIN
 
 	DECLARE @Count INT = 1
 
-	SELECT @isExitsBillInfor = IDBill, @Count = CountFood from BillInfo where IDBill = @IDBill AND idFood = @idFood
+	SELECT @isExitsBillInfor = IDBill, @Count = CountFood from BillInfo where IDBill = @IDBill AND IDFood = @idFood
 
 	IF(@isExitsBillInfor) >0 
 	BEGIN
 		DECLARE @newCount INT = @Count + @CountFood
 		IF(@newCount >0)
-			UPDATE BillInfo SET CountFood = @Count + @CountFood WHERE idFood = @idFood AND IDBill = @IDBill
+			UPDATE BillInfo SET CountFood = @Count + @CountFood WHERE IDFood = @idFood AND IDBill = @IDBill
 		ELSE
-			DELETE BillInfo WHERE IDBill = @IDBill AND idFood = @idFood
+			DELETE BillInfo WHERE IDBill = @IDBill AND IDFood = @idFood
 	END
 	ELSE 
 	BEGIN
@@ -272,6 +298,7 @@ GO
 
 --Trigger khi insert và update
 DELETE BillInfo
+go
 CREATE TRIGGER UTG_UpdateBillInfor
 ON BillInfo FOR INSERT, UPDATE 
 AS
@@ -290,6 +317,7 @@ GO
 
 --Trigger tạo ra bill mới
 DELETE Bill
+go
 CREATE TRIGGER UTG_Checkout
 ON Bill FOR UPDATE 
 AS
@@ -344,7 +372,6 @@ go
 
 select*
 from Account
-
 go 
 
 create proc USP_GetListAccountByUserName
@@ -370,3 +397,35 @@ begin
 select* from dbo.Account where UserName = @userName and MatKhau = @password
 end
 go
+
+-- thêm discount vào table Bill--
+ALTER TABLE Bill
+ADD discount INT
+go
+UPDATE Bill SET discount = 0
+go
+-- Update InsertBill thêm discount--
+ALTER PROC USP_InsertBill
+@IDTable INT
+AS 
+BEGIN
+	INSERT Bill
+	(
+		DateCheckIn,
+		DateCheckOut,
+		IDTable,
+		TinhTrang,
+		discount
+	)
+	VALUES 
+	(
+		GETDATE() ,
+		NULL,
+		@idTable,
+		0,
+		0
+	)
+END
+GO
+
+select * from Bill

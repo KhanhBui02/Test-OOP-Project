@@ -9,12 +9,13 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
 {
     public class Bill
     {
-        public Bill(int id, DateTime? dateCheckIn,DateTime? dateCheckOut,int status)
+        public Bill(int id, DateTime? dateCheckIn,DateTime? dateCheckOut,int status,int discount = 0)
         {
             this.ID = id;
             this.DateCheckIn = dateCheckIn;
             this.DateCheckOut = dateCheckOut;
             this.Status = status;
+            this.Discount = discount;
         }
 
         public Bill(DataRow row)
@@ -25,6 +26,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
             if(dateCheckOutTemp.ToString() != "")
                 this.DateCheckOut = (DateTime?)dateCheckOutTemp;
             this.Status = (int)row["TinhTrang"];
+            this.Discount = (int)row["discount"];
         }
 
         private int status;
@@ -57,6 +59,13 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
         {
             get { return iD; }
             set { iD = value; }
+        }
+
+        private int discount;
+        public int Discount
+        {
+            get { return discount; }
+            set { discount = value; }
         }
     }
 }
