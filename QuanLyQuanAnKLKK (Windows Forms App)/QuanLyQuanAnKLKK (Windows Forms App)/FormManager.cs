@@ -50,9 +50,37 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         {
             FormAdmin f = new FormAdmin();
             f.loginAccount = LoginAccount;
-            this.Hide();
+            f.InsertFood += f_Insertfood;
+            f.UpdateFood += f_Updatefood;
+            f.DeleteFood += f_Deletefood;
             f.ShowDialog();                         //hiện form Admin
-            this.Show();
+            
+        }
+        //hàm xử lí event khi xóa ở FormAdmin
+        private void f_Deletefood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as FoodCategory).IdCategory);
+            if (lsvBill.Tag != null){
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
+            LoadTable();
+        }
+        //hàm xử lí event khi sửa ở FormAdmin
+        private void f_Updatefood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as FoodCategory).IdCategory);
+            if (lsvBill.Tag != null) {
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
+        }
+        //hàm xử lí event khi thêm ở FormAdmin
+        private void f_Insertfood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as FoodCategory).IdCategory);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
         }
 
         void ChangeAccount(int type)
@@ -155,6 +183,12 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             lsvBill.Items.Clear(); // clear list view khi thêm món
 
             Table table = lsvBill.Tag as Table; //lấy id bàn
+
+            if (table == null) {
+                MessageBox.Show("Vui lòng chọn bàn");
+                return;
+            }
+
             int IDBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID); //lấy id của bill chưa check out
             int IDFood = (cbFood.SelectedItem as Food).IdFood; //IDFood nhập vào là IDFood từ Combobox
             int CountFood = (int)nmFoodCount.Value; //lấy số lượng từ bảng đếm

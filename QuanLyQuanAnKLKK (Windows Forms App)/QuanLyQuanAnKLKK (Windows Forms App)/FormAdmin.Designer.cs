@@ -45,7 +45,7 @@
             this.lbIDFood = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btSearchFood = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearchFoodName = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dtgvFood = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -70,6 +70,8 @@
             this.btAddCategory = new System.Windows.Forms.Button();
             this.TabpAccount = new System.Windows.Forms.TabPage();
             this.panel23 = new System.Windows.Forms.Panel();
+            this.btDeleteAccount = new System.Windows.Forms.Button();
+            this.btEditAccount = new System.Windows.Forms.Button();
             this.btSetPassword = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
             this.nudAccountType = new System.Windows.Forms.NumericUpDown();
@@ -77,14 +79,12 @@
             this.panel24 = new System.Windows.Forms.Panel();
             this.txbDisplayName = new System.Windows.Forms.TextBox();
             this.lbDisplayName = new System.Windows.Forms.Label();
+            this.btAddAccount = new System.Windows.Forms.Button();
             this.panel25 = new System.Windows.Forms.Panel();
             this.txbUserName = new System.Windows.Forms.TextBox();
             this.lbUsername = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
-            this.btDeleteAccount = new System.Windows.Forms.Button();
-            this.btEditAccount = new System.Windows.Forms.Button();
-            this.btAddAccount = new System.Windows.Forms.Button();
             this.TabpTable = new System.Windows.Forms.TabPage();
             this.panel20 = new System.Windows.Forms.Panel();
             this.panel27 = new System.Windows.Forms.Panel();
@@ -97,12 +97,12 @@
             this.txtIDTable = new System.Windows.Forms.TextBox();
             this.lbIDTable = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btDel = new System.Windows.Forms.Button();
+            this.btEddit = new System.Windows.Forms.Button();
+            this.btView = new System.Windows.Forms.Button();
+            this.btInsert = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dtgvTable = new System.Windows.Forms.DataGridView();
             this.TabpDoanhThu = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btWatchBill = new System.Windows.Forms.Button();
@@ -146,7 +146,7 @@
             this.panel22.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvTable)).BeginInit();
             this.TabpDoanhThu.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -295,6 +295,7 @@
             this.txtIDFood.ReadOnly = true;
             this.txtIDFood.Size = new System.Drawing.Size(133, 22);
             this.txtIDFood.TabIndex = 1;
+            this.txtIDFood.TextChanged += new System.EventHandler(this.txtIDFood_TextChanged);
             // 
             // lbIDFood
             // 
@@ -309,7 +310,7 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.btSearchFood);
-            this.panel5.Controls.Add(this.textBox1);
+            this.panel5.Controls.Add(this.txtSearchFoodName);
             this.panel5.Location = new System.Drawing.Point(451, 13);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(279, 79);
@@ -324,14 +325,15 @@
             this.btSearchFood.TabIndex = 0;
             this.btSearchFood.Text = "Tìm kiếm";
             this.btSearchFood.UseVisualStyleBackColor = true;
+            this.btSearchFood.Click += new System.EventHandler(this.btSearchFood_Click);
             // 
-            // textBox1
+            // txtSearchFoodName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(89, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 22);
-            this.textBox1.TabIndex = 1;
+            this.txtSearchFoodName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchFoodName.Location = new System.Drawing.Point(89, 30);
+            this.txtSearchFoodName.Name = "txtSearchFoodName";
+            this.txtSearchFoodName.Size = new System.Drawing.Size(172, 22);
+            this.txtSearchFoodName.TabIndex = 1;
             // 
             // panel2
             // 
@@ -363,29 +365,31 @@
             // btDeleteFood
             // 
             this.btDeleteFood.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDeleteFood.Location = new System.Drawing.Point(341, 17);
+            this.btDeleteFood.Location = new System.Drawing.Point(325, 17);
             this.btDeleteFood.Name = "btDeleteFood";
-            this.btDeleteFood.Size = new System.Drawing.Size(76, 47);
+            this.btDeleteFood.Size = new System.Drawing.Size(92, 47);
             this.btDeleteFood.TabIndex = 3;
             this.btDeleteFood.Text = "Xoá";
             this.btDeleteFood.UseVisualStyleBackColor = true;
+            this.btDeleteFood.Click += new System.EventHandler(this.btDeleteFood_Click);
             // 
             // btEditFood
             // 
             this.btEditFood.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEditFood.Location = new System.Drawing.Point(224, 17);
             this.btEditFood.Name = "btEditFood";
-            this.btEditFood.Size = new System.Drawing.Size(76, 47);
+            this.btEditFood.Size = new System.Drawing.Size(95, 47);
             this.btEditFood.TabIndex = 2;
             this.btEditFood.Text = "Sửa";
             this.btEditFood.UseVisualStyleBackColor = true;
+            this.btEditFood.Click += new System.EventHandler(this.btEditFood_Click);
             // 
             // btViewFood
             // 
             this.btViewFood.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btViewFood.Location = new System.Drawing.Point(110, 17);
             this.btViewFood.Name = "btViewFood";
-            this.btViewFood.Size = new System.Drawing.Size(71, 47);
+            this.btViewFood.Size = new System.Drawing.Size(108, 47);
             this.btViewFood.TabIndex = 1;
             this.btViewFood.Text = "Xem";
             this.btViewFood.UseVisualStyleBackColor = true;
@@ -396,10 +400,11 @@
             this.btAddFood.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAddFood.Location = new System.Drawing.Point(0, 17);
             this.btAddFood.Name = "btAddFood";
-            this.btAddFood.Size = new System.Drawing.Size(67, 47);
+            this.btAddFood.Size = new System.Drawing.Size(104, 47);
             this.btAddFood.TabIndex = 0;
             this.btAddFood.Text = "Thêm";
             this.btAddFood.UseVisualStyleBackColor = true;
+            this.btAddFood.Click += new System.EventHandler(this.btAddFood_Click);
             // 
             // TabpDanhmuc
             // 
@@ -489,9 +494,9 @@
             // dtgvCategory
             // 
             this.dtgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvCategory.Location = new System.Drawing.Point(0, 0);
+            this.dtgvCategory.Location = new System.Drawing.Point(3, 3);
             this.dtgvCategory.Name = "dtgvCategory";
-            this.dtgvCategory.Size = new System.Drawing.Size(416, 342);
+            this.dtgvCategory.Size = new System.Drawing.Size(410, 336);
             this.dtgvCategory.TabIndex = 0;
             // 
             // panel11
@@ -514,6 +519,7 @@
             this.btDeleteCategory.TabIndex = 3;
             this.btDeleteCategory.Text = "Xoá";
             this.btDeleteCategory.UseVisualStyleBackColor = true;
+            this.btDeleteCategory.Click += new System.EventHandler(this.btDeleteCategory_Click);
             // 
             // btEditCategory
             // 
@@ -524,6 +530,7 @@
             this.btEditCategory.TabIndex = 2;
             this.btEditCategory.Text = "Sửa";
             this.btEditCategory.UseVisualStyleBackColor = true;
+            this.btEditCategory.Click += new System.EventHandler(this.btEditCategory_Click);
             // 
             // btViewCategory
             // 
@@ -534,6 +541,7 @@
             this.btViewCategory.TabIndex = 1;
             this.btViewCategory.Text = "Xem";
             this.btViewCategory.UseVisualStyleBackColor = true;
+            this.btViewCategory.Click += new System.EventHandler(this.btViewCategory_Click);
             // 
             // btAddCategory
             // 
@@ -544,6 +552,7 @@
             this.btAddCategory.TabIndex = 0;
             this.btAddCategory.Text = "Thêm";
             this.btAddCategory.UseVisualStyleBackColor = true;
+            this.btAddCategory.Click += new System.EventHandler(this.btAddCategory_Click);
             // 
             // TabpAccount
             // 
@@ -570,6 +579,28 @@
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(279, 428);
             this.panel23.TabIndex = 7;
+            // 
+            // btDeleteAccount
+            // 
+            this.btDeleteAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDeleteAccount.Location = new System.Drawing.Point(166, 229);
+            this.btDeleteAccount.Name = "btDeleteAccount";
+            this.btDeleteAccount.Size = new System.Drawing.Size(76, 47);
+            this.btDeleteAccount.TabIndex = 3;
+            this.btDeleteAccount.Text = "Xoá";
+            this.btDeleteAccount.UseVisualStyleBackColor = true;
+            this.btDeleteAccount.Click += new System.EventHandler(this.btDeleteAccount_Click);
+            // 
+            // btEditAccount
+            // 
+            this.btEditAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEditAccount.Location = new System.Drawing.Point(50, 229);
+            this.btEditAccount.Name = "btEditAccount";
+            this.btEditAccount.Size = new System.Drawing.Size(76, 47);
+            this.btEditAccount.TabIndex = 2;
+            this.btEditAccount.Text = "Sửa";
+            this.btEditAccount.UseVisualStyleBackColor = true;
+            this.btEditAccount.Click += new System.EventHandler(this.btEditAccount_Click);
             // 
             // btSetPassword
             // 
@@ -640,6 +671,17 @@
             this.lbDisplayName.TabIndex = 0;
             this.lbDisplayName.Text = "Tên hiển thị:";
             // 
+            // btAddAccount
+            // 
+            this.btAddAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAddAccount.Location = new System.Drawing.Point(22, 167);
+            this.btAddAccount.Name = "btAddAccount";
+            this.btAddAccount.Size = new System.Drawing.Size(122, 47);
+            this.btAddAccount.TabIndex = 0;
+            this.btAddAccount.Text = "Thêm";
+            this.btAddAccount.UseVisualStyleBackColor = true;
+            this.btAddAccount.Click += new System.EventHandler(this.btAddAccount_Click);
+            // 
             // panel25
             // 
             this.panel25.Controls.Add(this.txbUserName);
@@ -684,39 +726,6 @@
             this.dtgvAccount.Size = new System.Drawing.Size(381, 413);
             this.dtgvAccount.TabIndex = 0;
             this.dtgvAccount.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellContentClick);
-            // 
-            // btDeleteAccount
-            // 
-            this.btDeleteAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDeleteAccount.Location = new System.Drawing.Point(166, 229);
-            this.btDeleteAccount.Name = "btDeleteAccount";
-            this.btDeleteAccount.Size = new System.Drawing.Size(76, 47);
-            this.btDeleteAccount.TabIndex = 3;
-            this.btDeleteAccount.Text = "Xoá";
-            this.btDeleteAccount.UseVisualStyleBackColor = true;
-            this.btDeleteAccount.Click += new System.EventHandler(this.btDeleteAccount_Click);
-            // 
-            // btEditAccount
-            // 
-            this.btEditAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btEditAccount.Location = new System.Drawing.Point(50, 229);
-            this.btEditAccount.Name = "btEditAccount";
-            this.btEditAccount.Size = new System.Drawing.Size(76, 47);
-            this.btEditAccount.TabIndex = 2;
-            this.btEditAccount.Text = "Sửa";
-            this.btEditAccount.UseVisualStyleBackColor = true;
-            this.btEditAccount.Click += new System.EventHandler(this.btEditAccount_Click);
-            // 
-            // btAddAccount
-            // 
-            this.btAddAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAddAccount.Location = new System.Drawing.Point(22, 167);
-            this.btAddAccount.Name = "btAddAccount";
-            this.btAddAccount.Size = new System.Drawing.Size(122, 47);
-            this.btAddAccount.TabIndex = 0;
-            this.btAddAccount.Text = "Thêm";
-            this.btAddAccount.UseVisualStyleBackColor = true;
-            this.btAddAccount.Click += new System.EventHandler(this.btAddAccount_Click);
             // 
             // TabpTable
             // 
@@ -826,70 +835,70 @@
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.button5);
-            this.panel19.Controls.Add(this.button6);
-            this.panel19.Controls.Add(this.button7);
-            this.panel19.Controls.Add(this.button8);
+            this.panel19.Controls.Add(this.btDel);
+            this.panel19.Controls.Add(this.btEddit);
+            this.panel19.Controls.Add(this.btView);
+            this.panel19.Controls.Add(this.btInsert);
             this.panel19.Location = new System.Drawing.Point(7, 17);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(417, 79);
             this.panel19.TabIndex = 5;
             // 
-            // button5
+            // btDel
             // 
-            this.button5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(341, 17);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(76, 47);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Xoá";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btDel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDel.Location = new System.Drawing.Point(341, 17);
+            this.btDel.Name = "btDel";
+            this.btDel.Size = new System.Drawing.Size(76, 47);
+            this.btDel.TabIndex = 3;
+            this.btDel.Text = "Xoá";
+            this.btDel.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btEddit
             // 
-            this.button6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(224, 17);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(76, 47);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "Sửa";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btEddit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEddit.Location = new System.Drawing.Point(224, 17);
+            this.btEddit.Name = "btEddit";
+            this.btEddit.Size = new System.Drawing.Size(76, 47);
+            this.btEddit.TabIndex = 2;
+            this.btEddit.Text = "Sửa";
+            this.btEddit.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btView
             // 
-            this.button7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(110, 17);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(71, 47);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Xem";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btView.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btView.Location = new System.Drawing.Point(110, 17);
+            this.btView.Name = "btView";
+            this.btView.Size = new System.Drawing.Size(71, 47);
+            this.btView.TabIndex = 1;
+            this.btView.Text = "Xem";
+            this.btView.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // btInsert
             // 
-            this.button8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(0, 17);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(67, 47);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "Thêm";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btInsert.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btInsert.Location = new System.Drawing.Point(0, 17);
+            this.btInsert.Name = "btInsert";
+            this.btInsert.Size = new System.Drawing.Size(67, 47);
+            this.btInsert.TabIndex = 0;
+            this.btInsert.Text = "Thêm";
+            this.btInsert.UseVisualStyleBackColor = true;
             // 
             // panel18
             // 
-            this.panel18.Controls.Add(this.dataGridView3);
+            this.panel18.Controls.Add(this.dtgvTable);
             this.panel18.Location = new System.Drawing.Point(8, 111);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(416, 342);
             this.panel18.TabIndex = 4;
             // 
-            // dataGridView3
+            // dtgvTable
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(416, 342);
-            this.dataGridView3.TabIndex = 0;
+            this.dtgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvTable.Location = new System.Drawing.Point(0, 0);
+            this.dtgvTable.Name = "dtgvTable";
+            this.dtgvTable.Size = new System.Drawing.Size(416, 342);
+            this.dtgvTable.TabIndex = 0;
             // 
             // TabpDoanhThu
             // 
@@ -931,7 +940,7 @@
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(562, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 16);
+            this.label1.Size = new System.Drawing.Size(89, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Ngày kết thúc";
             // 
@@ -941,7 +950,7 @@
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(85, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 16);
+            this.label2.Size = new System.Drawing.Size(85, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Ngày bắt đầu";
             // 
@@ -1032,7 +1041,7 @@
             this.panel22.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvTable)).EndInit();
             this.TabpDoanhThu.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -1069,7 +1078,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lbIDFood;
         private System.Windows.Forms.Button btSearchFood;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearchFoodName;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox txtIDFood;
         private System.Windows.Forms.Panel panel10;
@@ -1088,7 +1097,6 @@
         private System.Windows.Forms.TextBox txtCategoryID;
         private System.Windows.Forms.Label lbCategoryID;
         private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.DataGridView dtgvCategory;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button btDeleteCategory;
         private System.Windows.Forms.Button btEditCategory;
@@ -1117,16 +1125,17 @@
         private System.Windows.Forms.TextBox txtIDTable;
         private System.Windows.Forms.Label lbIDTable;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btDel;
+        private System.Windows.Forms.Button btEddit;
+        private System.Windows.Forms.Button btView;
+        private System.Windows.Forms.Button btInsert;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dtgvTable;
         private System.Windows.Forms.Panel panel27;
         private System.Windows.Forms.ComboBox cbStatusTable;
         private System.Windows.Forms.Label lbStatusTable;
         private System.Windows.Forms.ComboBox cbxFoodCategory;
         private System.Windows.Forms.NumericUpDown nudAccountType;
+        private System.Windows.Forms.DataGridView dtgvCategory;
     }
 }
