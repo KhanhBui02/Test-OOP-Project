@@ -31,7 +31,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             dtgvAccount.DataSource = accountList;
             dtgvFood.DataSource = foodlist;
             dtgvCategory.DataSource = foodcategory;
-            dtgvTable.DataSource = tablelist;
+
             LoadAccountList();
             AddAccountBinding();
             LoadListFood();//show list thức ăn khi formAdmin hiện ra //of kien
