@@ -1,10 +1,7 @@
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe.config
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
-<<<<<<< HEAD
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.AssemblyReference.cache
-=======
->>>>>>> fa2b7c8abfd43b2820b37002bb9b104d99819ae2
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.SuggestedBindingRedirects.cache
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormAdmin.resources
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormLogin.resources
@@ -15,6 +12,8 @@ C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Wi
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.CoreCompileInputs.cache
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
 C:\Project\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
+<<<<<<< HEAD
+=======
 E:\Study\Năm 2\OOP\Đồ án\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe.config
 E:\Study\Năm 2\OOP\Đồ án\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
 E:\Study\Năm 2\OOP\Đồ án\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
@@ -53,3 +52,4 @@ D:\OOP\project_oop\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAn
 D:\OOP\project_oop\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormChangeAccountInfo.resources
 D:\OOP\project_oop\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.Properties.Resources.resources
 D:\OOP\project_oop\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.GenerateResource.Cache
+>>>>>>> f08b454e0a7c437fb301d2bd695431623048dd77

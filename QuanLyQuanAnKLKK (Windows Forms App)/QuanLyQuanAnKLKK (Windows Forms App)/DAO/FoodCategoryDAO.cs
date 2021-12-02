@@ -42,9 +42,11 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
 
             return list;
         }
+
         public FoodCategory GetCategoryByID(int id)
         {
             FoodCategory foodCategory = null;
+
 
             string query = "select * from FoodCategory where IDCategory = " + id;
 

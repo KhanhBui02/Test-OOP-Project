@@ -29,6 +29,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             InitializeComponent();
             LoadTable();
             LoadCategory();
+            LoadComboBoxTable(cbSwapTable);
             this.LoginAccount = acc;
             CheckLoadTable();
         }
@@ -240,6 +241,28 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
                 ShowBill(table.ID); //show list bill đã xóa
                 LoadTable(); //load lại bàn
             }
+        }
+        void LoadComboBoxTable(ComboBox cb)
+        {
+            cb.DataSource = TableDAO.Instance.LoadTableList();
+            cb.DisplayMember = "Name";
+
+        }
+
+        private void btSwapTable_Click(object sender, EventArgs e)      // nút chuyển bàn
+        {
+            int id1 = (lsvBill.Tag as Table).ID;
+            int id2 = (cbSwapTable.SelectedItem as Table).ID;
+            if (MessageBox.Show(String.Format("Bạn có chắc muốn chuyển bàn {0} qua bàn {1}", (lsvBill.Tag as Table).Name, (cbSwapTable.SelectedItem as Table).Name), "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                TableDAO.Instance.SwapTable(id1, id2);      //chuyển bàn
+                LoadTable();
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

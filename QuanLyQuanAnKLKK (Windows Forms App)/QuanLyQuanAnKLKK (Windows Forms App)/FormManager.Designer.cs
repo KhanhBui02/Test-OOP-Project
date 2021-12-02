@@ -36,6 +36,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.nmFoodCount = new System.Windows.Forms.NumericUpDown();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lbDiscount = new System.Windows.Forms.Label();
             this.txbTotalPrice = new System.Windows.Forms.TextBox();
             this.cbSwapTable = new System.Windows.Forms.ComboBox();
             this.nmDiscount = new System.Windows.Forms.NumericUpDown();
@@ -52,7 +53,8 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.lbDiscount = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmFoodCount)).BeginInit();
@@ -70,7 +72,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(917, 26);
+            this.menuStrip1.Size = new System.Drawing.Size(1029, 26);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -108,18 +110,17 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.nmFoodCount);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.pnlBill);
-            this.panel1.Location = new System.Drawing.Point(12, 31);
+            this.panel1.Location = new System.Drawing.Point(43, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(460, 586);
+            this.panel1.Size = new System.Drawing.Size(501, 586);
             this.panel1.TabIndex = 1;
             // 
             // nmFoodCount
             // 
-            this.nmFoodCount.Location = new System.Drawing.Point(377, 21);
+            this.nmFoodCount.Location = new System.Drawing.Point(355, 17);
             this.nmFoodCount.Minimum = new decimal(new int[] {
             100,
             0,
@@ -148,6 +149,15 @@
             this.panel3.Size = new System.Drawing.Size(436, 65);
             this.panel3.TabIndex = 3;
             // 
+            // lbDiscount
+            // 
+            this.lbDiscount.AutoSize = true;
+            this.lbDiscount.Location = new System.Drawing.Point(93, 14);
+            this.lbDiscount.Name = "lbDiscount";
+            this.lbDiscount.Size = new System.Drawing.Size(76, 18);
+            this.lbDiscount.TabIndex = 8;
+            this.lbDiscount.Text = "Giảm giá:";
+            // 
             // txbTotalPrice
             // 
             this.txbTotalPrice.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -159,7 +169,6 @@
             this.txbTotalPrice.TabIndex = 7;
             this.txbTotalPrice.Text = "0";
             this.txbTotalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-
             // 
             // cbSwapTable
             // 
@@ -186,6 +195,7 @@
             this.btSwapTable.TabIndex = 4;
             this.btSwapTable.Text = "Chuyển bàn";
             this.btSwapTable.UseVisualStyleBackColor = true;
+            this.btSwapTable.Click += new System.EventHandler(this.btSwapTable_Click);
             // 
             // btThanhToan
             // 
@@ -200,6 +210,9 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Controls.Add(this.nmFoodCount);
             this.panel4.Controls.Add(this.btAddFood);
             this.panel4.Controls.Add(this.cbFood);
             this.panel4.Controls.Add(this.cbCategory);
@@ -222,17 +235,17 @@
             // cbFood
             // 
             this.cbFood.FormattingEnabled = true;
-            this.cbFood.Location = new System.Drawing.Point(1, 32);
+            this.cbFood.Location = new System.Drawing.Point(94, 32);
             this.cbFood.Name = "cbFood";
-            this.cbFood.Size = new System.Drawing.Size(273, 26);
+            this.cbFood.Size = new System.Drawing.Size(180, 26);
             this.cbFood.TabIndex = 1;
             // 
             // cbCategory
             // 
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(1, 3);
+            this.cbCategory.Location = new System.Drawing.Point(94, 3);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(273, 26);
+            this.cbCategory.Size = new System.Drawing.Size(180, 26);
             this.cbCategory.TabIndex = 0;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
@@ -283,27 +296,36 @@
             // 
             // flpTable
             // 
-            this.flpTable.Location = new System.Drawing.Point(478, 31);
+            this.flpTable.Location = new System.Drawing.Point(561, 34);
             this.flpTable.Name = "flpTable";
-            this.flpTable.Size = new System.Drawing.Size(427, 586);
+            this.flpTable.Size = new System.Drawing.Size(436, 586);
             this.flpTable.TabIndex = 2;
             // 
-            // lbDiscount
+            // label1
             // 
-            this.lbDiscount.AutoSize = true;
-            this.lbDiscount.Location = new System.Drawing.Point(93, 14);
-            this.lbDiscount.Name = "lbDiscount";
-            this.lbDiscount.Size = new System.Drawing.Size(76, 18);
-            this.lbDiscount.TabIndex = 8;
-            this.lbDiscount.Text = "Giảm giá:";
-
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 18);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Danh mục:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 18);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Món ăn:";
             // 
             // FormManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(917, 629);
+            this.ClientSize = new System.Drawing.Size(1029, 629);
             this.Controls.Add(this.flpTable);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -321,6 +343,7 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDiscount)).EndInit();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.pnlBill.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -354,5 +377,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.TextBox txbTotalPrice;
         private System.Windows.Forms.Label lbDiscount;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

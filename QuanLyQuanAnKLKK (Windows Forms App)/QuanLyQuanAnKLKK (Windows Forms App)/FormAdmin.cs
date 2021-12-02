@@ -28,7 +28,10 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         public FormAdmin()
         {
             InitializeComponent();
+            LoadAccountList();
+            LoadCategoryIntoComboBox(cbxFoodCategory);
             Loadd();
+
         }
         #region method
         void Loadd()        //vì xuất hiện lỗi nên ko dùng Load
@@ -157,6 +160,13 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             List<Food> listfood = FoodDAO.Instance.SearchFoodByName(name);
 
             return listfood;
+        }
+        void AddFoodBinding() {
+            txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource,"NameFood",true,DataSourceUpdateMode.Never));
+
+        }
+        void LoadCategoryIntoComboBox(ComboBox cb) {
+            cb.DataSource = FoodCategoryDAO.Instance.GetListCategory();
         }
         #endregion
 

@@ -58,5 +58,9 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
 
             return result > 0;
         }
+        public void SwapTable(int id1,int id2)
+        {
+            DataProvider.Instance.ExecuteQuery("USP_SwapTable @idTable1 , @idTable2", new object[]{id1, id2});
+        }
     }
 }

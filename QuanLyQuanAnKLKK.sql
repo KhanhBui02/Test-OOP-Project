@@ -237,7 +237,7 @@ VALUES
 )
 go
 SELECT * FROM BillInfo
-
+go
 --Tạo proc thêm bill
 CREATE PROC USP_InsertBill
 @IDTable INT
@@ -315,8 +315,12 @@ BEGIN
 	DECLARE @IDTable INT
 
 	SELECT @IDTable = IDTable FROM Bill WHERE IDBill = @IDBill AND TinhTrang = 0
-
+	DECLARE @count int
+	SELECT @count = count(*) FROM BillInfo WHERE IDBill = @IDBill
+	IF(@count > 0)
 	UPDATE TableFood SET TinhTrang = N'Có người' WHERE IDTable = @IDTable
+	ELSE
+	UPDATE TableFood SET TinhTrang = N'Trống' WHERE IDTable = @IDTable
 END
 GO
 
@@ -410,7 +414,7 @@ go
 UPDATE Bill SET discount = 0
 go
 -- Update InsertBill thêm discount--
-ALTER PROC USP_InsertBill
+CREATE PROC USP_InsertBill
 @IDTable INT
 AS 
 BEGIN
@@ -462,6 +466,86 @@ begin
 end
 go
 --end
+--sửa mật khẩu trong table Account thành 19410212215111233119891703916020115525510316
+select * from Account
+
+Update Food Set IDCategory = 2 where NameFood = N'Gà chiên nước mắm'
+go
+Update Food Set IDCategory = 2 where NameFood = N'Gà chiên giòn'
+go
+Update Food Set IDCategory = 3 where NameFood = N'Bò lúc lắc'
+go
+Update Food Set IDCategory = 3 where NameFood = N'Bò né'
+go
+
+
+delete FoodCategory
+delete Bill
+go
+
+
+-- chức năng chuyển bàn--
+CREATE PROC USP_SwapTable
+@idTable1 int ,@idTable2 int 
+AS BEGIN
+
+	DECLARE @idFirstBill int
+	DECLARE @idSecondBill int
+	DECLARE @IsFirstTableEmpty int = 1
+	DECLARE @IsSecondTableEmpty int = 1
+	SELECT @idFirstBill = IDBill FROM Bill WHERE IDTable = @idTable1 AND TinhTrang = 0
+	SELECT @idSecondBill = IDBill FROM Bill WHERE IDTable = @idTable2 AND TinhTrang = 0
+
+	IF(@idFirstBill IS NULL)
+	BEGIN
+		INSERT INTO Bill
+					( DateCheckIn,
+					  DateCheckOut,
+					  IDTable,
+					  TinhTrang
+					 )
+				VALUES( GETDATE(),
+						NULL,
+						@idTable1,
+						0
+					  )
+		SELECT @idFirstBill = MAX(IDBill) FROM Bill WHERE IDTable = @idTable1 AND TinhTrang = 0
+	END
+
+	SELECT @IsFirstTableEmpty = COUNT(*) FROM BillInfo WHERE IDBill = @idFirstBill
+
+		IF(@idSecondBill IS NULL)
+	BEGIN
+		INSERT INTO Bill
+					( DateCheckIn,
+					  DateCheckOut,
+					  IDTable,
+					  TinhTrang
+					 )
+               VALUES( GETDATE(),
+					   NULL,
+					   @idTable2,
+					   0
+					 )
+		SELECT @idSecondBill = MAX(IDBill) FROM Bill WHERE IDTable = @idTable2 AND TinhTrang = 0
+	END
+
+	SELECT @IsSecondTableEmpty = COUNT(*) FROM BillInfo WHERE IDBill = @idSecondBill
+
+	SELECT IDBillInfo INTO IDBillInfoTable FROM BillInfo WHERE idBill = @idSecondBill
+
+	UPDATE BillInfo SET IDBill = @idSecondBill WHERE IDBill = @idFirstBill
+	 
+	UPDATE BillInfo SET IDBill = @idFirstBill WHERE IDBillInfo IN (SELECT * FROM IDBillInfoTable)
+
+	DROP TABLE IDBillInfoTable
+
+	IF(@IsFirstTableEmpty = 0)
+		UPDATE TableFood SET TinhTrang = N'Trống' WHERE IDTable = @idTable2
+	IF(@IsSecondTableEmpty = 0)
+		UPDATE TableFood SET TinhTrang = N'Trống' WHERE IDTable = @idTable1
+END
+go
 select * from BillInfo
 
 select *from Account

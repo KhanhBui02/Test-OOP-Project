@@ -31,6 +31,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
 
             string query = "SELECT * FROM FOOD WHERE IDCategory = " + id;
 
+
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)
