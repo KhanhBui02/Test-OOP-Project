@@ -22,6 +22,7 @@ create table TableFood
 )
 go
 
+
 --Account
 create table Account
 (
@@ -80,7 +81,9 @@ create table BillInfo
 go
 
 --Tale List
-SELECT * FROM TableFood
+SELECT * FROM BillInfo
+SELECT * FROM TableFood, Bill
+
 DELETE TableFood
 
 --Tạo 9 bàn

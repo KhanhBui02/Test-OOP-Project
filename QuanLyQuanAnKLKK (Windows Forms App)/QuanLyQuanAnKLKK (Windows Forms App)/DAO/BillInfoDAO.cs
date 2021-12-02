@@ -57,5 +57,14 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         {
             DataProvider.Instance.ExecuteQuery("Delete BillInfo where idFood = " + idCategory);
         }
+        internal void DeleteBillInfoByTableID(int idTable)
+        {
+            
+            DataProvider.Instance.ExecuteQuery("delete billinfo from Bill as B, " +
+            " TableFood as TF, BillInfo as BI where B.idBill = BI.idBill and " +
+            " B.IDTable = TF.idTable and TF.idTable = " + idTable);
+
+            DataProvider.Instance.ExecuteQuery("delete Bill where IDTable = " + idTable);
+        }
     }
 }

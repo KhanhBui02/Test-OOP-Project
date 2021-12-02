@@ -15,6 +15,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 {
     public partial class FormManager : Form
     {
+
         private Account loginAccount;
 
         public Account LoginAccount 
@@ -29,6 +30,16 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             LoadTable();
             LoadCategory();
             this.LoginAccount = acc;
+            CheckLoadTable();
+        }
+
+        void CheckLoadTable()
+        {
+            if (FormAdmin.check == 1)
+            {
+                LoadTable();
+                FormAdmin.check = 0;
+            }
         }
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -47,13 +58,21 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản (" + e.Acc.DisplayName + ")";
         }
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {   
+            
             FormAdmin f = new FormAdmin();
+            this.Hide();                                    // khi show form quản lý bàn ăn và thanh toán sẽ tắt form đăng nhập
+            
+            
             f.loginAccount = LoginAccount;
             f.InsertFood += f_Insertfood;
             f.UpdateFood += f_Updatefood;
             f.DeleteFood += f_Deletefood;
-            f.ShowDialog();                         //hiện form Admin
+
+            f.ShowDialog();//hiện form Admin
+            LoadTable();
+            this.Show();
+
             
         }
         //hàm xử lí event khi xóa ở FormAdmin

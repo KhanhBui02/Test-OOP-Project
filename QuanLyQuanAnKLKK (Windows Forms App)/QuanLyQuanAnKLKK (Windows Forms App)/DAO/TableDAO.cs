@@ -35,7 +35,28 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
             }
             return tablelist;
         }
+        public bool InsertTable(string name)
+        {
+            string query = String.Format("insert TableFood (TENBAN) values (N'{0}')", name);
+            int result = (int)DataProvider.Instance.ExecuteNonQuery(query);
 
-        
+            return result > 0;
+        }
+        public bool UpdateTable(string name,int idTable)
+        {
+            string query = String.Format("update TableFood set TENBAN = N'{0}' where IDTable = {1}", name, idTable);
+            int result = (int)DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+        public bool DeleteTable(int idTable)
+        {
+            BillInfoDAO.Instance.DeleteBillInfoByTableID(idTable); //xóa những Billinfo có IdTable Bị xóa
+
+            string query = String.Format("Delete TableFood where IDTable = {0}", idTable);
+            int result = (int)DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
     }
 }

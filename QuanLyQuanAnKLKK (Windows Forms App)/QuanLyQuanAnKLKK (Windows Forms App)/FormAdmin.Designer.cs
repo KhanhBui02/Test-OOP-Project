@@ -853,6 +853,7 @@
             this.btDel.TabIndex = 3;
             this.btDel.Text = "Xoá";
             this.btDel.UseVisualStyleBackColor = true;
+            this.btDel.Click += new System.EventHandler(this.btDel_Click);
             // 
             // btEddit
             // 
@@ -863,6 +864,7 @@
             this.btEddit.TabIndex = 2;
             this.btEddit.Text = "Sửa";
             this.btEddit.UseVisualStyleBackColor = true;
+            this.btEddit.Click += new System.EventHandler(this.btEddit_Click);
             // 
             // btView
             // 
@@ -873,6 +875,7 @@
             this.btView.TabIndex = 1;
             this.btView.Text = "Xem";
             this.btView.UseVisualStyleBackColor = true;
+            this.btView.Click += new System.EventHandler(this.btView_Click);
             // 
             // btInsert
             // 
@@ -883,6 +886,7 @@
             this.btInsert.TabIndex = 0;
             this.btInsert.Text = "Thêm";
             this.btInsert.UseVisualStyleBackColor = true;
+            this.btInsert.Click += new System.EventHandler(this.btInsert_Click);
             // 
             // panel18
             // 

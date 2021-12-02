@@ -15,9 +15,14 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 {
     public partial class FormAdmin : Form
     {
+        public static int check = 0;
+            
+        FormManager fm;
+
         BindingSource accountList = new BindingSource();
         BindingSource foodlist = new BindingSource();
         BindingSource foodcategory = new BindingSource();
+        BindingSource table = new BindingSource();
 
         public Account loginAccount;
         public FormAdmin()
@@ -31,6 +36,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             dtgvAccount.DataSource = accountList;
             dtgvFood.DataSource = foodlist;
             dtgvCategory.DataSource = foodcategory;
+            dtgvTable.DataSource = table;
 
             LoadAccountList();
             AddAccountBinding();
@@ -39,7 +45,8 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             AddFoodBinding();//Binding // of kien
             LoadListCategory();
             AddCategoryBinding();
-            
+            LoadListTable();
+            AddTableBinding();  
         }
         //load CatogoryFood vào danh mục thức ăn // of kien
         void LoadCategoryIntoCombBox(ComboBox cb)
@@ -130,9 +137,19 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         {
             foodcategory.DataSource = FoodCategoryDAO.Instance.GetListCategory();
         }
-        void AddCategoryBinding() {
+        void AddCategoryBinding()
+        {
             txtCategoryID.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "IdCategory",true, DataSourceUpdateMode.Never));
             txtCategoryName.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "NameCategory", true, DataSourceUpdateMode.Never));
+        }
+        void LoadListTable()
+        {
+            table.DataSource = TableDAO.Instance.LoadTableList();
+        }
+        void AddTableBinding()
+        {
+            txtIDTable.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "ID", true, DataSourceUpdateMode.Never));
+            txtTableName.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "Name", true, DataSourceUpdateMode.Never));
         }
 
         List<Food> SearchFoodByName(string name) {
@@ -339,7 +356,80 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             }
         }
 
-        
+        private void btInsert_Click(object sender, EventArgs e)
+        {
+            string name = txtTableName.Text;
+
+            if (TableDAO.Instance.InsertTable(name))
+            {
+                MessageBox.Show("Thêm thành công!!");
+                LoadListTable();
+                if (updateTable != null)
+                    updateTable(this, new EventArgs());
+            }
+            else
+            {
+                MessageBox.Show("lỗi !!!");
+            }
+        }
+        private void btView_Click(object sender, EventArgs e)
+        {
+            LoadListTable();
+        }
+        private void btEddit_Click(object sender, EventArgs e)
+        {
+            string name = txtTableName.Text;
+            int idTable = Convert.ToInt32(txtIDTable.Text);
+
+            if (TableDAO.Instance.UpdateTable(name, idTable))
+            {
+                MessageBox.Show("Thêm thành công!!");
+                LoadListTable();
+                if (updateTable != null)
+                    updateTable(this, new EventArgs());
+            }
+            else
+            {
+                MessageBox.Show("lỗi !!!");
+            }
+        }
+        private void btDel_Click(object sender, EventArgs e)
+        {
+            int idTable = Convert.ToInt32(txtIDTable.Text);
+
+            if (TableDAO.Instance.DeleteTable(idTable))
+            {   
+                MessageBox.Show("Xóa thành công");
+                LoadListTable();
+
+                check = 1;
+            }
+            else
+            {
+                MessageBox.Show("lỗi");
+            }
+        }
+
+        private event EventHandler insertTable;
+        public event EventHandler InsertTable
+        {
+            add { insertTable += value; }
+            remove { insertTable -= value; }
+        }
+
+        private event EventHandler updateTable;
+        public event EventHandler UpdateTable
+        {
+            add { updateTable += value; }
+            remove { updateTable -= value; }
+        }
+
+        private event EventHandler deleteTable;
+        public event EventHandler DeleteTable
+        {
+            add { deleteTable += value; }
+            remove { deleteTable -= value; }
+        }
         #endregion
 
         private void dtgvAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -351,6 +441,14 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         {
         
         }
+
+        
+
+        
+
+        
+
+        
 
         
 
