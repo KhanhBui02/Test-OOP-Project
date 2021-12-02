@@ -105,8 +105,10 @@
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.Size = new System.Drawing.Size(176, 26);
             this.txtPassWord.TabIndex = 1;
+            this.txtPassWord.Text = "12";
             this.txtPassWord.UseSystemPasswordChar = true;
             this.txtPassWord.UseWaitCursor = true;
+            this.txtPassWord.TextChanged += new System.EventHandler(this.txtPassWord_TextChanged);
             // 
             // labelPassWord
             // 
@@ -138,6 +140,7 @@
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(176, 26);
             this.txtLogin.TabIndex = 1;
+            this.txtLogin.Text = "thanhloi";
             this.txtLogin.UseWaitCursor = true;
             // 
             // labelLogin
@@ -181,7 +184,7 @@
             this.AcceptButton = this.btLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btOut;
             this.ClientSize = new System.Drawing.Size(704, 191);
             this.Controls.Add(this.panel4);

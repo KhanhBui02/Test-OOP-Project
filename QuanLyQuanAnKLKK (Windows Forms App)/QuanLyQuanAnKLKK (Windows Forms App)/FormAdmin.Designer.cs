@@ -45,7 +45,7 @@
             this.lbIDFood = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btSearchFood = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearchFoodName = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dtgvFood = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -70,23 +70,21 @@
             this.btAddCategory = new System.Windows.Forms.Button();
             this.TabpAccount = new System.Windows.Forms.TabPage();
             this.panel23 = new System.Windows.Forms.Panel();
+            this.btDeleteAccount = new System.Windows.Forms.Button();
+            this.btEditAccount = new System.Windows.Forms.Button();
             this.btSetPassword = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.nudAccountType = new System.Windows.Forms.NumericUpDown();
             this.lbStatus = new System.Windows.Forms.Label();
             this.panel24 = new System.Windows.Forms.Panel();
-            this.txtDisplayName = new System.Windows.Forms.TextBox();
+            this.txbDisplayName = new System.Windows.Forms.TextBox();
             this.lbDisplayName = new System.Windows.Forms.Label();
+            this.btAddAccount = new System.Windows.Forms.Button();
             this.panel25 = new System.Windows.Forms.Panel();
-            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txbUserName = new System.Windows.Forms.TextBox();
             this.lbUsername = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.btDeleteAccount = new System.Windows.Forms.Button();
-            this.btEditAccount = new System.Windows.Forms.Button();
-            this.btViewAccount = new System.Windows.Forms.Button();
-            this.btAddAccount = new System.Windows.Forms.Button();
             this.TabpTable = new System.Windows.Forms.TabPage();
             this.panel20 = new System.Windows.Forms.Panel();
             this.panel27 = new System.Windows.Forms.Panel();
@@ -99,12 +97,12 @@
             this.txtIDTable = new System.Windows.Forms.TextBox();
             this.lbIDTable = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btDel = new System.Windows.Forms.Button();
+            this.btEddit = new System.Windows.Forms.Button();
+            this.btView = new System.Windows.Forms.Button();
+            this.btInsert = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dtgvTable = new System.Windows.Forms.DataGridView();
             this.TabpDoanhThu = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btWatchBill = new System.Windows.Forms.Button();
@@ -136,11 +134,11 @@
             this.TabpAccount.SuspendLayout();
             this.panel23.SuspendLayout();
             this.panel26.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).BeginInit();
             this.panel24.SuspendLayout();
             this.panel25.SuspendLayout();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
-            this.panel14.SuspendLayout();
             this.TabpTable.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel27.SuspendLayout();
@@ -148,7 +146,7 @@
             this.panel22.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvTable)).BeginInit();
             this.TabpDoanhThu.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -297,6 +295,7 @@
             this.txtIDFood.ReadOnly = true;
             this.txtIDFood.Size = new System.Drawing.Size(133, 22);
             this.txtIDFood.TabIndex = 1;
+            this.txtIDFood.TextChanged += new System.EventHandler(this.txtIDFood_TextChanged);
             // 
             // lbIDFood
             // 
@@ -311,7 +310,7 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.btSearchFood);
-            this.panel5.Controls.Add(this.textBox1);
+            this.panel5.Controls.Add(this.txtSearchFoodName);
             this.panel5.Location = new System.Drawing.Point(451, 13);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(279, 79);
@@ -326,14 +325,15 @@
             this.btSearchFood.TabIndex = 0;
             this.btSearchFood.Text = "Tìm kiếm";
             this.btSearchFood.UseVisualStyleBackColor = true;
+            this.btSearchFood.Click += new System.EventHandler(this.btSearchFood_Click);
             // 
-            // textBox1
+            // txtSearchFoodName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(89, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 22);
-            this.textBox1.TabIndex = 1;
+            this.txtSearchFoodName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchFoodName.Location = new System.Drawing.Point(89, 30);
+            this.txtSearchFoodName.Name = "txtSearchFoodName";
+            this.txtSearchFoodName.Size = new System.Drawing.Size(172, 22);
+            this.txtSearchFoodName.TabIndex = 1;
             // 
             // panel2
             // 
@@ -365,29 +365,31 @@
             // btDeleteFood
             // 
             this.btDeleteFood.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDeleteFood.Location = new System.Drawing.Point(341, 17);
+            this.btDeleteFood.Location = new System.Drawing.Point(325, 17);
             this.btDeleteFood.Name = "btDeleteFood";
-            this.btDeleteFood.Size = new System.Drawing.Size(76, 47);
+            this.btDeleteFood.Size = new System.Drawing.Size(92, 47);
             this.btDeleteFood.TabIndex = 3;
             this.btDeleteFood.Text = "Xoá";
             this.btDeleteFood.UseVisualStyleBackColor = true;
+            this.btDeleteFood.Click += new System.EventHandler(this.btDeleteFood_Click);
             // 
             // btEditFood
             // 
             this.btEditFood.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEditFood.Location = new System.Drawing.Point(224, 17);
             this.btEditFood.Name = "btEditFood";
-            this.btEditFood.Size = new System.Drawing.Size(76, 47);
+            this.btEditFood.Size = new System.Drawing.Size(95, 47);
             this.btEditFood.TabIndex = 2;
             this.btEditFood.Text = "Sửa";
             this.btEditFood.UseVisualStyleBackColor = true;
+            this.btEditFood.Click += new System.EventHandler(this.btEditFood_Click);
             // 
             // btViewFood
             // 
             this.btViewFood.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btViewFood.Location = new System.Drawing.Point(110, 17);
             this.btViewFood.Name = "btViewFood";
-            this.btViewFood.Size = new System.Drawing.Size(71, 47);
+            this.btViewFood.Size = new System.Drawing.Size(108, 47);
             this.btViewFood.TabIndex = 1;
             this.btViewFood.Text = "Xem";
             this.btViewFood.UseVisualStyleBackColor = true;
@@ -398,10 +400,11 @@
             this.btAddFood.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAddFood.Location = new System.Drawing.Point(0, 17);
             this.btAddFood.Name = "btAddFood";
-            this.btAddFood.Size = new System.Drawing.Size(67, 47);
+            this.btAddFood.Size = new System.Drawing.Size(104, 47);
             this.btAddFood.TabIndex = 0;
             this.btAddFood.Text = "Thêm";
             this.btAddFood.UseVisualStyleBackColor = true;
+            this.btAddFood.Click += new System.EventHandler(this.btAddFood_Click);
             // 
             // TabpDanhmuc
             // 
@@ -491,9 +494,9 @@
             // dtgvCategory
             // 
             this.dtgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvCategory.Location = new System.Drawing.Point(0, 0);
+            this.dtgvCategory.Location = new System.Drawing.Point(3, 3);
             this.dtgvCategory.Name = "dtgvCategory";
-            this.dtgvCategory.Size = new System.Drawing.Size(416, 342);
+            this.dtgvCategory.Size = new System.Drawing.Size(410, 336);
             this.dtgvCategory.TabIndex = 0;
             // 
             // panel11
@@ -516,6 +519,7 @@
             this.btDeleteCategory.TabIndex = 3;
             this.btDeleteCategory.Text = "Xoá";
             this.btDeleteCategory.UseVisualStyleBackColor = true;
+            this.btDeleteCategory.Click += new System.EventHandler(this.btDeleteCategory_Click);
             // 
             // btEditCategory
             // 
@@ -526,6 +530,7 @@
             this.btEditCategory.TabIndex = 2;
             this.btEditCategory.Text = "Sửa";
             this.btEditCategory.UseVisualStyleBackColor = true;
+            this.btEditCategory.Click += new System.EventHandler(this.btEditCategory_Click);
             // 
             // btViewCategory
             // 
@@ -536,6 +541,7 @@
             this.btViewCategory.TabIndex = 1;
             this.btViewCategory.Text = "Xem";
             this.btViewCategory.UseVisualStyleBackColor = true;
+            this.btViewCategory.Click += new System.EventHandler(this.btViewCategory_Click);
             // 
             // btAddCategory
             // 
@@ -546,12 +552,12 @@
             this.btAddCategory.TabIndex = 0;
             this.btAddCategory.Text = "Thêm";
             this.btAddCategory.UseVisualStyleBackColor = true;
+            this.btAddCategory.Click += new System.EventHandler(this.btAddCategory_Click);
             // 
             // TabpAccount
             // 
             this.TabpAccount.Controls.Add(this.panel23);
             this.TabpAccount.Controls.Add(this.panel15);
-            this.TabpAccount.Controls.Add(this.panel14);
             this.TabpAccount.Location = new System.Drawing.Point(4, 22);
             this.TabpAccount.Name = "TabpAccount";
             this.TabpAccount.Padding = new System.Windows.Forms.Padding(3);
@@ -562,42 +568,71 @@
             // 
             // panel23
             // 
+            this.panel23.Controls.Add(this.btDeleteAccount);
+            this.panel23.Controls.Add(this.btEditAccount);
             this.panel23.Controls.Add(this.btSetPassword);
             this.panel23.Controls.Add(this.panel26);
             this.panel23.Controls.Add(this.panel24);
+            this.panel23.Controls.Add(this.btAddAccount);
             this.panel23.Controls.Add(this.panel25);
-            this.panel23.Location = new System.Drawing.Point(450, 111);
+            this.panel23.Location = new System.Drawing.Point(450, 25);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(279, 342);
+            this.panel23.Size = new System.Drawing.Size(279, 428);
             this.panel23.TabIndex = 7;
+            // 
+            // btDeleteAccount
+            // 
+            this.btDeleteAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDeleteAccount.Location = new System.Drawing.Point(166, 229);
+            this.btDeleteAccount.Name = "btDeleteAccount";
+            this.btDeleteAccount.Size = new System.Drawing.Size(76, 47);
+            this.btDeleteAccount.TabIndex = 3;
+            this.btDeleteAccount.Text = "Xoá";
+            this.btDeleteAccount.UseVisualStyleBackColor = true;
+            this.btDeleteAccount.Click += new System.EventHandler(this.btDeleteAccount_Click);
+            // 
+            // btEditAccount
+            // 
+            this.btEditAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEditAccount.Location = new System.Drawing.Point(50, 229);
+            this.btEditAccount.Name = "btEditAccount";
+            this.btEditAccount.Size = new System.Drawing.Size(76, 47);
+            this.btEditAccount.TabIndex = 2;
+            this.btEditAccount.Text = "Sửa";
+            this.btEditAccount.UseVisualStyleBackColor = true;
+            this.btEditAccount.Click += new System.EventHandler(this.btEditAccount_Click);
             // 
             // btSetPassword
             // 
             this.btSetPassword.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSetPassword.Location = new System.Drawing.Point(178, 167);
+            this.btSetPassword.Location = new System.Drawing.Point(153, 167);
             this.btSetPassword.Name = "btSetPassword";
-            this.btSetPassword.Size = new System.Drawing.Size(83, 47);
+            this.btSetPassword.Size = new System.Drawing.Size(108, 47);
             this.btSetPassword.TabIndex = 4;
             this.btSetPassword.Text = "Đặt lại mật khẩu";
             this.btSetPassword.UseVisualStyleBackColor = true;
+            this.btSetPassword.Click += new System.EventHandler(this.btSetPassword_Click);
             // 
             // panel26
             // 
-            this.panel26.Controls.Add(this.cbStatus);
+            this.panel26.Controls.Add(this.nudAccountType);
             this.panel26.Controls.Add(this.lbStatus);
             this.panel26.Location = new System.Drawing.Point(6, 119);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(270, 42);
             this.panel26.TabIndex = 3;
             // 
-            // cbStatus
+            // nudAccountType
             // 
-            this.cbStatus.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(160, 10);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(95, 24);
-            this.cbStatus.TabIndex = 1;
+            this.nudAccountType.Location = new System.Drawing.Point(160, 11);
+            this.nudAccountType.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudAccountType.Name = "nudAccountType";
+            this.nudAccountType.Size = new System.Drawing.Size(36, 20);
+            this.nudAccountType.TabIndex = 5;
             // 
             // lbStatus
             // 
@@ -611,20 +646,20 @@
             // 
             // panel24
             // 
-            this.panel24.Controls.Add(this.txtDisplayName);
+            this.panel24.Controls.Add(this.txbDisplayName);
             this.panel24.Controls.Add(this.lbDisplayName);
             this.panel24.Location = new System.Drawing.Point(6, 71);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(270, 42);
             this.panel24.TabIndex = 2;
             // 
-            // txtDisplayName
+            // txbDisplayName
             // 
-            this.txtDisplayName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDisplayName.Location = new System.Drawing.Point(160, 9);
-            this.txtDisplayName.Name = "txtDisplayName";
-            this.txtDisplayName.Size = new System.Drawing.Size(95, 22);
-            this.txtDisplayName.TabIndex = 1;
+            this.txbDisplayName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbDisplayName.Location = new System.Drawing.Point(160, 9);
+            this.txbDisplayName.Name = "txbDisplayName";
+            this.txbDisplayName.Size = new System.Drawing.Size(95, 22);
+            this.txbDisplayName.TabIndex = 1;
             // 
             // lbDisplayName
             // 
@@ -636,23 +671,33 @@
             this.lbDisplayName.TabIndex = 0;
             this.lbDisplayName.Text = "Tên hiển thị:";
             // 
+            // btAddAccount
+            // 
+            this.btAddAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAddAccount.Location = new System.Drawing.Point(22, 167);
+            this.btAddAccount.Name = "btAddAccount";
+            this.btAddAccount.Size = new System.Drawing.Size(122, 47);
+            this.btAddAccount.TabIndex = 0;
+            this.btAddAccount.Text = "Thêm";
+            this.btAddAccount.UseVisualStyleBackColor = true;
+            this.btAddAccount.Click += new System.EventHandler(this.btAddAccount_Click);
+            // 
             // panel25
             // 
-            this.panel25.Controls.Add(this.txtUserName);
+            this.panel25.Controls.Add(this.txbUserName);
             this.panel25.Controls.Add(this.lbUsername);
             this.panel25.Location = new System.Drawing.Point(6, 23);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(270, 42);
             this.panel25.TabIndex = 1;
             // 
-            // txtUserName
+            // txbUserName
             // 
-            this.txtUserName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(160, 9);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.ReadOnly = true;
-            this.txtUserName.Size = new System.Drawing.Size(95, 22);
-            this.txtUserName.TabIndex = 1;
+            this.txbUserName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbUserName.Location = new System.Drawing.Point(160, 9);
+            this.txbUserName.Name = "txbUserName";
+            this.txbUserName.Size = new System.Drawing.Size(95, 22);
+            this.txbUserName.TabIndex = 1;
             // 
             // lbUsername
             // 
@@ -667,69 +712,20 @@
             // panel15
             // 
             this.panel15.Controls.Add(this.dtgvAccount);
-            this.panel15.Location = new System.Drawing.Point(7, 111);
+            this.panel15.Location = new System.Drawing.Point(7, 6);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(416, 342);
+            this.panel15.Size = new System.Drawing.Size(416, 447);
             this.panel15.TabIndex = 3;
             // 
             // dtgvAccount
             // 
+            this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvAccount.Location = new System.Drawing.Point(0, 0);
+            this.dtgvAccount.Location = new System.Drawing.Point(32, 19);
             this.dtgvAccount.Name = "dtgvAccount";
-            this.dtgvAccount.Size = new System.Drawing.Size(417, 342);
+            this.dtgvAccount.Size = new System.Drawing.Size(381, 413);
             this.dtgvAccount.TabIndex = 0;
-            // 
-            // panel14
-            // 
-            this.panel14.Controls.Add(this.btDeleteAccount);
-            this.panel14.Controls.Add(this.btEditAccount);
-            this.panel14.Controls.Add(this.btViewAccount);
-            this.panel14.Controls.Add(this.btAddAccount);
-            this.panel14.Location = new System.Drawing.Point(7, 17);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(417, 79);
-            this.panel14.TabIndex = 2;
-            // 
-            // btDeleteAccount
-            // 
-            this.btDeleteAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDeleteAccount.Location = new System.Drawing.Point(341, 17);
-            this.btDeleteAccount.Name = "btDeleteAccount";
-            this.btDeleteAccount.Size = new System.Drawing.Size(76, 47);
-            this.btDeleteAccount.TabIndex = 3;
-            this.btDeleteAccount.Text = "Xoá";
-            this.btDeleteAccount.UseVisualStyleBackColor = true;
-            // 
-            // btEditAccount
-            // 
-            this.btEditAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btEditAccount.Location = new System.Drawing.Point(224, 17);
-            this.btEditAccount.Name = "btEditAccount";
-            this.btEditAccount.Size = new System.Drawing.Size(76, 47);
-            this.btEditAccount.TabIndex = 2;
-            this.btEditAccount.Text = "Sửa";
-            this.btEditAccount.UseVisualStyleBackColor = true;
-            // 
-            // btViewAccount
-            // 
-            this.btViewAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btViewAccount.Location = new System.Drawing.Point(110, 17);
-            this.btViewAccount.Name = "btViewAccount";
-            this.btViewAccount.Size = new System.Drawing.Size(71, 47);
-            this.btViewAccount.TabIndex = 1;
-            this.btViewAccount.Text = "Xem";
-            this.btViewAccount.UseVisualStyleBackColor = true;
-            // 
-            // btAddAccount
-            // 
-            this.btAddAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAddAccount.Location = new System.Drawing.Point(0, 17);
-            this.btAddAccount.Name = "btAddAccount";
-            this.btAddAccount.Size = new System.Drawing.Size(67, 47);
-            this.btAddAccount.TabIndex = 0;
-            this.btAddAccount.Text = "Thêm";
-            this.btAddAccount.UseVisualStyleBackColor = true;
+            this.dtgvAccount.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellContentClick);
             // 
             // TabpTable
             // 
@@ -839,70 +835,70 @@
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.button5);
-            this.panel19.Controls.Add(this.button6);
-            this.panel19.Controls.Add(this.button7);
-            this.panel19.Controls.Add(this.button8);
+            this.panel19.Controls.Add(this.btDel);
+            this.panel19.Controls.Add(this.btEddit);
+            this.panel19.Controls.Add(this.btView);
+            this.panel19.Controls.Add(this.btInsert);
             this.panel19.Location = new System.Drawing.Point(7, 17);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(417, 79);
             this.panel19.TabIndex = 5;
             // 
-            // button5
+            // btDel
             // 
-            this.button5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(341, 17);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(76, 47);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Xoá";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btDel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDel.Location = new System.Drawing.Point(341, 17);
+            this.btDel.Name = "btDel";
+            this.btDel.Size = new System.Drawing.Size(76, 47);
+            this.btDel.TabIndex = 3;
+            this.btDel.Text = "Xoá";
+            this.btDel.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btEddit
             // 
-            this.button6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(224, 17);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(76, 47);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "Sửa";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btEddit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEddit.Location = new System.Drawing.Point(224, 17);
+            this.btEddit.Name = "btEddit";
+            this.btEddit.Size = new System.Drawing.Size(76, 47);
+            this.btEddit.TabIndex = 2;
+            this.btEddit.Text = "Sửa";
+            this.btEddit.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btView
             // 
-            this.button7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(110, 17);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(71, 47);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Xem";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btView.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btView.Location = new System.Drawing.Point(110, 17);
+            this.btView.Name = "btView";
+            this.btView.Size = new System.Drawing.Size(71, 47);
+            this.btView.TabIndex = 1;
+            this.btView.Text = "Xem";
+            this.btView.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // btInsert
             // 
-            this.button8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(0, 17);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(67, 47);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "Thêm";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btInsert.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btInsert.Location = new System.Drawing.Point(0, 17);
+            this.btInsert.Name = "btInsert";
+            this.btInsert.Size = new System.Drawing.Size(67, 47);
+            this.btInsert.TabIndex = 0;
+            this.btInsert.Text = "Thêm";
+            this.btInsert.UseVisualStyleBackColor = true;
             // 
             // panel18
             // 
-            this.panel18.Controls.Add(this.dataGridView3);
+            this.panel18.Controls.Add(this.dtgvTable);
             this.panel18.Location = new System.Drawing.Point(8, 111);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(416, 342);
             this.panel18.TabIndex = 4;
             // 
-            // dataGridView3
+            // dtgvTable
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(416, 342);
-            this.dataGridView3.TabIndex = 0;
+            this.dtgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvTable.Location = new System.Drawing.Point(0, 0);
+            this.dtgvTable.Name = "dtgvTable";
+            this.dtgvTable.Size = new System.Drawing.Size(416, 342);
+            this.dtgvTable.TabIndex = 0;
             // 
             // TabpDoanhThu
             // 
@@ -992,7 +988,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(795, 518);
             this.Controls.Add(this.TabcAdmin);
             this.Name = "FormAdmin";
@@ -1028,13 +1024,13 @@
             this.panel23.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAccountType)).EndInit();
             this.panel24.ResumeLayout(false);
             this.panel24.PerformLayout();
             this.panel25.ResumeLayout(false);
             this.panel25.PerformLayout();
             this.panel15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
-            this.panel14.ResumeLayout(false);
             this.TabpTable.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
             this.panel27.ResumeLayout(false);
@@ -1045,7 +1041,7 @@
             this.panel22.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvTable)).EndInit();
             this.TabpDoanhThu.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -1082,7 +1078,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lbIDFood;
         private System.Windows.Forms.Button btSearchFood;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearchFoodName;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox txtIDFood;
         private System.Windows.Forms.Panel panel10;
@@ -1101,7 +1097,6 @@
         private System.Windows.Forms.TextBox txtCategoryID;
         private System.Windows.Forms.Label lbCategoryID;
         private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.DataGridView dtgvCategory;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button btDeleteCategory;
         private System.Windows.Forms.Button btEditCategory;
@@ -1110,20 +1105,17 @@
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Button btSetPassword;
         private System.Windows.Forms.Panel panel26;
-        private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Panel panel24;
-        private System.Windows.Forms.TextBox txtDisplayName;
+        private System.Windows.Forms.TextBox txbDisplayName;
         private System.Windows.Forms.Label lbDisplayName;
         private System.Windows.Forms.Panel panel25;
-        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.TextBox txbUserName;
         private System.Windows.Forms.Label lbUsername;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.DataGridView dtgvAccount;
-        private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Button btDeleteAccount;
         private System.Windows.Forms.Button btEditAccount;
-        private System.Windows.Forms.Button btViewAccount;
         private System.Windows.Forms.Button btAddAccount;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Panel panel21;
@@ -1133,15 +1125,17 @@
         private System.Windows.Forms.TextBox txtIDTable;
         private System.Windows.Forms.Label lbIDTable;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btDel;
+        private System.Windows.Forms.Button btEddit;
+        private System.Windows.Forms.Button btView;
+        private System.Windows.Forms.Button btInsert;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dtgvTable;
         private System.Windows.Forms.Panel panel27;
         private System.Windows.Forms.ComboBox cbStatusTable;
         private System.Windows.Forms.Label lbStatusTable;
         private System.Windows.Forms.ComboBox cbxFoodCategory;
+        private System.Windows.Forms.NumericUpDown nudAccountType;
+        private System.Windows.Forms.DataGridView dtgvCategory;
     }
 }

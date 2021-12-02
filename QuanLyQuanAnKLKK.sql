@@ -4,7 +4,6 @@ go
 use QuanLyQuanAnKLKK
 go
 
-
 --các table cần tạo
 --Food
 --TableFood
@@ -59,7 +58,7 @@ create table Bill
 (
 	IDBill int identity primary key,					--ID thanh toán
 	DateCheckIn date not null default getdate(),		--ngày vào
-	DateChekOut date,									--ngày ra
+	DateCheckOut date,									--ngày ra
 	IDTable int not null,								--ID của bàn
 	TinhTrang int not null default 0 ,					--1: đã thanh toán || 0:chưa thanh toán
 
@@ -67,11 +66,12 @@ create table Bill
 )
 go
 
+--BillInfo
 create table BillInfo
 (
 	IDBillInfo int identity primary key,		--ID 
 	IDBill int not null,						--ID thanh toán
-	idFood int not null,						--ID món ăn
+	IDFood int not null,						--ID món ăn
 	CountFood int not null default 0			--số lượng món ăn
 
 	foreign key (IDBill) references Bill(IDbill),	--khoá ngoại IDBill tới khoá chính IDBill bảng Bill
@@ -79,6 +79,266 @@ create table BillInfo
 )
 go
 
+--Tale List
+SELECT * FROM TableFood
+DELETE TableFood
+
+--Tạo 9 bàn
+DECLARE @i INT = 1
+
+WHILE @i <=10
+BEGIN 
+	INSERT TableFood (TENBAN) VALUES (N'Bàn '+ CAST(@i AS nvarchar(100)))
+	SET @i = @i+1
+END
+go
+
+--Thêm Category
+SELECT * FROM FoodCategory
+
+INSERT FoodCategory(NameCategory)
+VALUES (N'Hải sản')
+go
+INSERT FoodCategory(NameCategory)
+VALUES (N'Gà')
+go
+INSERT FoodCategory(NameCategory)
+VALUES (N'Bò')
+go
+INSERT FoodCategory(NameCategory)
+VALUES (N'Mì')
+go
+INSERT FoodCategory(NameCategory)
+VALUES (N'Nước giải khát')
+go
+
+--Thêm món ăn
+SELECT * FROM Food
+group by IDCategory
+
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'Tôm hấp bia',1,120000)
+go
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'Mực nướng sa tế',1,180000)
+go
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'Cua biển rang muối',1,100000)
+go
+--
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'Bò lúc lắc',3,80000)
+go
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'Bò né',3,80000)
+go
+--
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'Gà chiên nước mắm',2,80000)
+go
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'Gà chiên giòn',2,70000)
+go
+--
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'Mì xào giòn',4,80000)
+go
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'Mì xào hải sản',4,120000)
+go
+
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'Pepsi',5,12000)
+go
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'7 UP',5,12000)
+go
+INSERT Food(NameFood,IDCategory,Price)
+VALUES (N'Bia',5,15000)
+go
+
+--Thêm bill
+INSERT Bill(DateCheckIn,DateCheckOut,IDTable,TinhTrang)
+VALUES 
+(
+	GETDATE() ,
+	NULL,
+	1,
+	0
+)
+go
+INSERT Bill(DateCheckIn,DateCheckOut,IDTable,TinhTrang)
+VALUES 
+(
+	GETDATE() ,
+	NULL,
+	2,
+	0
+)
+go
+INSERT Bill(DateCheckIn,DateCheckOut,IDTable,TinhTrang)
+VALUES 
+(
+	GETDATE() ,
+	GETDATE(),
+	2,
+	1
+)
+go
+INSERT Bill(DateCheckIn,DateCheckOut,IDTable,TinhTrang)
+VALUES 
+(
+	GETDATE() ,
+	NULL,
+	3,
+	0
+)
+go
+SELECT * FROM Bill
+SELECT MAX(IDBill) FROM Bill
+
+--THÊM BillInfo
+INSERT BillInfo(IDBill,IDFood,CountFood)
+VALUES
+(	1,
+	1,
+	2
+)
+go
+INSERT BillInfo(IDBill,IDFood,CountFood)
+VALUES
+(	1,
+	3,
+	4
+)
+go
+INSERT BillInfo(IDBill,IDFood,CountFood)
+VALUES
+(	1,
+	5,
+	2
+)
+go
+INSERT BillInfo(IDBill,IDFood,CountFood)
+VALUES
+(	2,
+	6,
+	2
+)
+go
+INSERT BillInfo(IDBill,IDFood,CountFood)
+VALUES
+(	3,
+	5,
+	2
+)
+go
+SELECT * FROM BillInfo
+
+--Tạo proc thêm bill
+CREATE PROC USP_InsertBill
+@IDTable INT
+AS 
+BEGIN
+	INSERT Bill
+	(
+		DateCheckIn,
+		DateCheckOut,
+		IDTable,
+		TinhTrang
+	)
+	VALUES 
+	(
+		GETDATE() ,
+		NULL,
+		@idTable,
+		0
+	)
+END
+GO
+
+--Tạo proc danh sách bàn ăn
+CREATE PROC USP_GetTableList
+AS SELECT * FROM TableFood
+GO
+USP_GetTableList
+
+--Tạo proc billinfo
+DELETE Bill
+go
+
+CREATE PROC USP_InsertBillInfor 
+@IDBill INT, @idFood INT, @CountFood INT
+AS
+BEGIN
+	DECLARE @isExitsBillInfor INT
+
+	DECLARE @Count INT = 1
+
+	SELECT @isExitsBillInfor = IDBill, @Count = CountFood from BillInfo where IDBill = @IDBill AND IDFood = @idFood
+
+	IF(@isExitsBillInfor) >0 
+	BEGIN
+		DECLARE @newCount INT = @Count + @CountFood
+		IF(@newCount >0)
+			UPDATE BillInfo SET CountFood = @Count + @CountFood WHERE IDFood = @idFood AND IDBill = @IDBill
+		ELSE
+			DELETE BillInfo WHERE IDBill = @IDBill AND IDFood = @idFood
+	END
+	ELSE 
+	BEGIN
+		INSERT BillInfo
+		VALUES 
+		(
+			@IDBill,
+			@idFood,
+			@CountFood
+		)
+		END
+END
+GO
+
+--Trigger khi insert và update
+DELETE BillInfo
+go
+CREATE TRIGGER UTG_UpdateBillInfor
+ON BillInfo FOR INSERT, UPDATE 
+AS
+BEGIN
+	DECLARE @IDBill INT
+
+	SELECT @IDBill=IDBill FROM inserted
+
+	DECLARE @IDTable INT
+
+	SELECT @IDTable = IDTable FROM Bill WHERE IDBill = @IDBill AND TinhTrang = 0
+
+	UPDATE TableFood SET TinhTrang = N'Có người' WHERE IDTable = @IDTable
+END
+GO
+
+--Trigger tạo ra bill mới
+DELETE Bill
+go
+CREATE TRIGGER UTG_Checkout
+ON Bill FOR UPDATE 
+AS
+BEGIN
+	DECLARE @IDBill INT
+
+	SELECT @IDBill = IDBill FROM Inserted
+
+	DECLARE @IDTable INT
+
+	SELECT @IDTable = IDTable FROM Bill WHERE IDBill = @IDBill
+
+	DECLARE @Count INT = 0
+
+	SELECT @Count = Count (*) FROM Bill WHERE IDTable = @IDTable AND TinhTrang = 0
+
+	IF(@Count = 0) UPDATE TableFood SET TinhTrang = N'Trống' WHERE IDTable = @IDTable
+END
+GO
 
 --TEST DATAPROVIDER
 insert into Account
@@ -114,7 +374,6 @@ go
 
 select*
 from Account
-
 go 
 
 create proc USP_GetListAccountByUserName
@@ -128,3 +387,140 @@ end
 go
 exec USP_GetListAccountByUserName @userName = N'thanhloi'
 
+select*
+from dbo.Account
+where  UserName = N'thanhloi' and MatKhau = N'12'
+go
+
+create proc USP_Login
+@userName nvarchar(100), @password nvarchar(100)
+as
+begin
+select* from dbo.Account where UserName = @userName and MatKhau = @password
+end
+go
+
+-- thêm discount vào table Bill--
+ALTER TABLE Bill
+ADD discount INT
+go
+UPDATE Bill SET discount = 0
+go
+-- Update InsertBill thêm discount--
+ALTER PROC USP_InsertBill
+@IDTable INT
+AS 
+BEGIN
+	INSERT Bill
+	(
+		DateCheckIn,
+		DateCheckOut,
+		IDTable,
+		TinhTrang,
+		discount
+	)
+	VALUES 
+	(
+		GETDATE() ,
+		NULL,
+		@idTable,
+		0,
+		0
+	)
+END
+GO
+
+select * from Bill
+go
+
+--áaasd
+--asdasd
+--asdasdas
+--ádasdasd
+
+---B.Khanh đã thêm phần này
+create proc USP_UpdateAccount
+@userName nvarchar(100), @displayName nvarchar(100), @matKhau nvarchar(100), @matKhauMoi nvarchar(100)
+as
+begin
+	declare @dungMatKhau int = 0
+
+	select @dungMatKhau = count(*) from dbo.Account where  UserName = @userName and MatKhau = @matKhau
+
+	if (@dungMatKhau = 1)
+	begin
+		if (@matKhauMoi = NULL or @matKhauMoi='')
+		begin
+			update dbo.Account set DisplayName = @displayName where UserName = @userName
+		end
+		else
+			update dbo.Account set DisplayName = @displayName, MatKhau = @matKhauMoi where UserName = @userName
+	end
+end
+go
+--end
+select * from BillInfo
+
+select *from Account
+
+--
+create trigger UTG_DeleteBillInfo
+on BillInfo for delete
+as
+Begin 
+	declare @IDBillInfo int
+	declare @IDBill int
+	select @IDBillInfo = IDBill,  @IDBill = Deleted.IDBill from Deleted
+
+	declare @IDTable int
+	select @IDTable = Bill.IDTable from Bill where IDBill = @IDBill
+
+	declare @count int = 0
+
+	select @count = count(*) from BillInfo as Bi,Bill as B
+	where B.IDBill = Bi.IDBill and B.IDBill = @IDBill and B.TinhTrang = 0
+
+	if(@count = 0)
+		update TableFood set TinhTrang = N'Trống' where TableFood.IDTable = @IDTable
+end 
+go
+
+--hàm Bỏ dấu để search
+CREATE FUNCTION [dbo].[GetUnsignString](@strInput NVARCHAR(4000)) 
+RETURNS NVARCHAR(4000)
+AS
+BEGIN     
+    IF @strInput IS NULL RETURN @strInput
+    IF @strInput = '' RETURN @strInput
+    DECLARE @RT NVARCHAR(4000)
+    DECLARE @SIGN_CHARS NCHAR(136)
+    DECLARE @UNSIGN_CHARS NCHAR (136)
+
+    SET @SIGN_CHARS       = N'ăâđêôơưàảãạáằẳẵặắầẩẫậấèẻẽẹéềểễệếìỉĩịíòỏõọóồổỗộốờởỡợớùủũụúừửữựứỳỷỹỵýĂÂĐÊÔƠƯÀẢÃẠÁẰẲẴẶẮẦẨẪẬẤÈẺẼẸÉỀỂỄỆẾÌỈĨỊÍÒỎÕỌÓỒỔỖỘỐỜỞỠỢỚÙỦŨỤÚỪỬỮỰỨỲỶỸỴÝ'+NCHAR(272)+ NCHAR(208)
+    SET @UNSIGN_CHARS = N'aadeoouaaaaaaaaaaaaaaaeeeeeeeeeeiiiiiooooooooooooooouuuuuuuuuuyyyyyAADEOOUAAAAAAAAAAAAAAAEEEEEEEEEEIIIIIOOOOOOOOOOOOOOOUUUUUUUUUUYYYYYDD'
+
+    DECLARE @COUNTER int
+    DECLARE @COUNTER1 int
+    SET @COUNTER = 1
+ 
+    WHILE (@COUNTER <=LEN(@strInput))
+    BEGIN   
+      SET @COUNTER1 = 1
+      --Tim trong chuoi mau
+       WHILE (@COUNTER1 <=LEN(@SIGN_CHARS)+1)
+       BEGIN
+     IF UNICODE(SUBSTRING(@SIGN_CHARS, @COUNTER1,1)) = UNICODE(SUBSTRING(@strInput,@COUNTER ,1) )
+     BEGIN           
+          IF @COUNTER=1
+              SET @strInput = SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)-1)                   
+          ELSE
+              SET @strInput = SUBSTRING(@strInput, 1, @COUNTER-1) +SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)- @COUNTER)    
+              BREAK         
+               END
+             SET @COUNTER1 = @COUNTER1 +1
+       END
+      --Tim tiep
+       SET @COUNTER = @COUNTER +1
+    END
+    RETURN @strInput
+END

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
 {
-    class FoodDAO
+    public class FoodDAO
     {
         private static FoodDAO instance;
 
@@ -23,12 +23,14 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         }
         private FoodDAO()
         {
+
         }
         public List<Food> GetFoodByCategoryID(int id)
         {
             List<Food> list = new List<Food>();
 
-            String query = "select *from Food where IDCategory = " + id;
+            string query = "SELECT * FROM FOOD WHERE IDCategory = " + id;
+
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -44,7 +46,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         {
             List<Food> list = new List<Food>();
 
-            String query = "select * from Food";
+            string query = "select * from Food";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -55,12 +57,42 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
             }
             return list;
         }
-        public bool InsertFood(String name, int idCategory, float price)
+        public bool InsertFood(string name, int idCategory, float price)
         {
-            String query = String.Format("insert Food (NameFood, IDCategory, Price) values (N'{0}',{1},{2})", name, idCategory, price);
+            string query = String.Format("insert Food (NameFood, IDCategory, Price) values (N'{0}',{1},{2})", name, idCategory, price);
             int result = (int)DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
+        }
+        public bool UpdateFood(string name, int idCategory, float price, int idFood)
+        {
+            string query = String.Format("update Food set NameFood = N'{0}', IDCategory = {1}, Price = {2} where IDFood = {3}", name, idCategory, price, idFood);
+            int result = (int)DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+        public bool DeleteFood(int idFood)
+        {
+            BillInfoDAO.Instance.DeleteBillInfoByFoodID(idFood); //xóa những Billinfo có IdFood Bị xóa
+
+            string query = String.Format("Delete Food where IDFood = {0}", idFood);
+            int result = (int)DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+        public List<Food> SearchFoodByName(string name) {
+            List<Food> list = new List<Food>();
+
+            string query = string.Format("SELECT * FROM Food WHERE [dbo].[GetUnsignString](NameFood) LIKE N'%' + [dbo].[GetUnsignString](N'{0}') + '%'", name);
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Food food = new Food(item);
+                list.Add(food);
+            }
+            return list;
         }
     }
 }
