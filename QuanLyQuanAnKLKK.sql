@@ -304,7 +304,7 @@ GO
 --Trigger khi insert và update
 DELETE BillInfo
 go
-CREATE TRIGGER UTG_UpdateBillInfor
+ALTER TRIGGER UTG_UpdateBillInfor
 ON BillInfo FOR INSERT, UPDATE 
 AS
 BEGIN

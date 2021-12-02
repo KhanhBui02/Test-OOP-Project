@@ -161,10 +161,6 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 
             return listfood;
         }
-        void AddFoodBinding() {
-            txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource,"NameFood",true,DataSourceUpdateMode.Never));
-
-        }
         void LoadCategoryIntoComboBox(ComboBox cb) {
             cb.DataSource = FoodCategoryDAO.Instance.GetListCategory();
         }
