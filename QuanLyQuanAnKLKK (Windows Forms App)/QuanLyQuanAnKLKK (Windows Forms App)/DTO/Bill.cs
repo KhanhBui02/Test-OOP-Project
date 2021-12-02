@@ -26,7 +26,9 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
             if(dateCheckOutTemp.ToString() != "")
                 this.DateCheckOut = (DateTime?)dateCheckOutTemp;
             this.Status = (int)row["TinhTrang"];
-            this.Discount = (int)row["discount"];
+
+            if(row["discount"].ToString() != "")
+                this.Discount = (int)row["discount"];
         }
 
         private int status;
