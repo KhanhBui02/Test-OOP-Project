@@ -48,5 +48,14 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         {
             throw new NotImplementedException();
         }
+
+        internal void DeleteBillInfoByFoodID(int idFood)
+        {
+            DataProvider.Instance.ExecuteQuery("Delete BillInfo where idFood = " + idFood);
+        }
+        internal void DeleteBillInfoByCategoryID(int idCategory)
+        {
+            DataProvider.Instance.ExecuteQuery("Delete BillInfo where idFood = " + idCategory);
+        }
     }
 }

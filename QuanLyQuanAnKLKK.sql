@@ -95,6 +95,7 @@ go
 
 --Thêm Category
 SELECT * FROM FoodCategory
+
 INSERT FoodCategory(NameCategory)
 VALUES (N'Hải sản')
 go
@@ -114,6 +115,7 @@ go
 --Thêm món ăn
 SELECT * FROM Food
 group by IDCategory
+
 INSERT Food(NameFood,IDCategory,Price)
 VALUES (N'Tôm hấp bia',1,120000)
 go
@@ -328,7 +330,7 @@ AS
 BEGIN
 	DECLARE @IDBill INT
 
-	SELECT @IDBill=IDBill FROM Inserted
+	SELECT @IDBill = IDBill FROM Inserted
 
 	DECLARE @IDTable INT
 
@@ -541,3 +543,68 @@ AS BEGIN
 		UPDATE TableFood SET TinhTrang = N'Trống' WHERE IDTable = @idTable1
 END
 go
+select * from BillInfo
+
+select *from Account
+
+--
+create trigger UTG_DeleteBillInfo
+on BillInfo for delete
+as
+Begin 
+	declare @IDBillInfo int
+	declare @IDBill int
+	select @IDBillInfo = IDBill,  @IDBill = Deleted.IDBill from Deleted
+
+	declare @IDTable int
+	select @IDTable = Bill.IDTable from Bill where IDBill = @IDBill
+
+	declare @count int = 0
+
+	select @count = count(*) from BillInfo as Bi,Bill as B
+	where B.IDBill = Bi.IDBill and B.IDBill = @IDBill and B.TinhTrang = 0
+
+	if(@count = 0)
+		update TableFood set TinhTrang = N'Trống' where TableFood.IDTable = @IDTable
+end 
+go
+
+--hàm Bỏ dấu để search
+CREATE FUNCTION [dbo].[GetUnsignString](@strInput NVARCHAR(4000)) 
+RETURNS NVARCHAR(4000)
+AS
+BEGIN     
+    IF @strInput IS NULL RETURN @strInput
+    IF @strInput = '' RETURN @strInput
+    DECLARE @RT NVARCHAR(4000)
+    DECLARE @SIGN_CHARS NCHAR(136)
+    DECLARE @UNSIGN_CHARS NCHAR (136)
+
+    SET @SIGN_CHARS       = N'ăâđêôơưàảãạáằẳẵặắầẩẫậấèẻẽẹéềểễệếìỉĩịíòỏõọóồổỗộốờởỡợớùủũụúừửữựứỳỷỹỵýĂÂĐÊÔƠƯÀẢÃẠÁẰẲẴẶẮẦẨẪẬẤÈẺẼẸÉỀỂỄỆẾÌỈĨỊÍÒỎÕỌÓỒỔỖỘỐỜỞỠỢỚÙỦŨỤÚỪỬỮỰỨỲỶỸỴÝ'+NCHAR(272)+ NCHAR(208)
+    SET @UNSIGN_CHARS = N'aadeoouaaaaaaaaaaaaaaaeeeeeeeeeeiiiiiooooooooooooooouuuuuuuuuuyyyyyAADEOOUAAAAAAAAAAAAAAAEEEEEEEEEEIIIIIOOOOOOOOOOOOOOOUUUUUUUUUUYYYYYDD'
+
+    DECLARE @COUNTER int
+    DECLARE @COUNTER1 int
+    SET @COUNTER = 1
+ 
+    WHILE (@COUNTER <=LEN(@strInput))
+    BEGIN   
+      SET @COUNTER1 = 1
+      --Tim trong chuoi mau
+       WHILE (@COUNTER1 <=LEN(@SIGN_CHARS)+1)
+       BEGIN
+     IF UNICODE(SUBSTRING(@SIGN_CHARS, @COUNTER1,1)) = UNICODE(SUBSTRING(@strInput,@COUNTER ,1) )
+     BEGIN           
+          IF @COUNTER=1
+              SET @strInput = SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)-1)                   
+          ELSE
+              SET @strInput = SUBSTRING(@strInput, 1, @COUNTER-1) +SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)- @COUNTER)    
+              BREAK         
+               END
+             SET @COUNTER1 = @COUNTER1 +1
+       END
+      --Tim tiep
+       SET @COUNTER = @COUNTER +1
+    END
+    RETURN @strInput
+END
