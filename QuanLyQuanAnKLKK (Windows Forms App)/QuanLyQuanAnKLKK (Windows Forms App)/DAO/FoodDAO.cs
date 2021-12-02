@@ -28,7 +28,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         {
             List<Food> list = new List<Food>();
 
-            String query = "";
+            String query = "select *from Food where IDCategory = " + id;
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 

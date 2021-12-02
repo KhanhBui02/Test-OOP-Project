@@ -24,10 +24,10 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
 
         public Food(DataRow row)
         {
-            this.idFood = (int)row["idFood"];
-            this.nameFood = row["nameFood"].ToString();
-            this.idCategory = (int)row["idCategory"];
-            this.price = (float)Convert.ToDouble(row["price"].ToString());
+            this.idFood = (int)row["IDFood"];
+            this.nameFood = row["NameFood"].ToString();
+            this.idCategory = (int)row["IDCategory"];
+            this.price = (float)Convert.ToDouble(row["Price"].ToString());
         }
 
         public int IdFood

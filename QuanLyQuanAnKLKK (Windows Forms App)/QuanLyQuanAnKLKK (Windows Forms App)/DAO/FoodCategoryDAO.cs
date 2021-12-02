@@ -41,6 +41,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
 
             return list;
         }
+        
 
     }
 }

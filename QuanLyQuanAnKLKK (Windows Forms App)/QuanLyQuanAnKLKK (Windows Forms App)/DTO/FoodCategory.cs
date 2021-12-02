@@ -20,8 +20,8 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DTO
 
         public FoodCategory(DataRow row)
         {
-            this.idCategory = (int)row["idCategory"];
-            this.nameCategory = row["nameCategory"].ToString();
+            this.idCategory = (int)row["IDCategory"];
+            this.nameCategory = row["NameCategory"].ToString();
         }
 
         public int IdCategory

@@ -18,6 +18,8 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         {
             InitializeComponent();
             LoadAccountList();
+            //AddFoodBinding();
+            LoadCategoryIntoComboBox(cbxFoodCategory);
         }
         #region method
         void LoadAccountList()
@@ -28,6 +30,13 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         }
         void LoadListFood(){
             dtgvFood.DataSource = FoodDAO.Instance.GetListFood();
+        }
+        void AddFoodBinding() {
+            txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource,"NameFood",true,DataSourceUpdateMode.Never));
+
+        }
+        void LoadCategoryIntoComboBox(ComboBox cb) {
+            cb.DataSource = FoodCategoryDAO.Instance.GetListCategory();
         }
         #endregion
 
