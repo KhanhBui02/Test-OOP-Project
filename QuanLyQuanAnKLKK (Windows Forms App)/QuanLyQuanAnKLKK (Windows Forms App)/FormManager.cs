@@ -237,7 +237,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             //dialog 
             if (MessageBox.Show(String.Format("Bạn có chắc thanh toán hóa đơn cho {0}\nTổng tiền: {1} Đồng\nGiảm giá: {2}%\nTổng tiền sau khi giảm giá: {3} Đồng", table.Name,totalPrice,discount,finalPrice) ,"Thông báo",MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                BillDAO.Instance.CheckOut(IDBill,discount);
+                BillDAO.Instance.CheckOut(IDBill,discount,(float)finalPrice);
                 ShowBill(table.ID); //show list bill đã xóa
                 LoadTable(); //load lại bàn
             }
@@ -262,7 +262,17 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
 
         private void label1_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void thêmMónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btAddFood_Click(this, new EventArgs());
+        }
+
+        private void thanhToánToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btThanhToan_Click(this, new EventArgs());
         }
     }
 }

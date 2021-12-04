@@ -30,8 +30,9 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             InitializeComponent();
             LoadAccountList();
             LoadCategoryIntoComboBox(cbxFoodCategory);
+            LoadListBillByDate(dtpcheckIn.Value, dtpcheckOut.Value);
             Loadd();
-
+            LoadDateTimePickerBill();
         }
         #region method
         void Loadd()        //vì xuất hiện lỗi nên ko dùng Load
@@ -163,6 +164,24 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         }
         void LoadCategoryIntoComboBox(ComboBox cb) {
             cb.DataSource = FoodCategoryDAO.Instance.GetListCategory();
+        }
+
+        void LoadListBillByDate(DateTime checkIn,DateTime checkOut)
+        {
+           dtgvBill.DataSource =  BillDAO.Instance.GetListBillByDate(checkIn, checkOut);
+        }
+
+        void LoadDateTimePickerBill()
+        {
+            DateTime today = DateTime.Now;
+            dtpcheckIn.Value = new DateTime(today.Year, today.Month, 1);
+            dtpcheckOut.Value = dtpcheckIn.Value.AddMonths(1).AddDays(-1);
+        }
+        void loadListReport(){
+
+            this.USP_GetListBillByDaterReportTableAdapter.Fill(this.QuanLyQuanAnKLKKDataSet1.USP_GetListBillByDaterReport, dtpcheckIn.Value, dtpcheckOut.Value);
+
+            this.rpView.RefreshReport();
         }
         #endregion
 
@@ -436,6 +455,12 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             add { deleteTable += value; }
             remove { deleteTable -= value; }
         }
+        //click để load lại report
+        private void button1_Click(object sender, EventArgs e)
+        {
+            loadListReport();
+        }
+
         #endregion
 
         private void dtgvAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -448,6 +473,20 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         
         }
 
+        private void btWatchBill_Click(object sender, EventArgs e)
+        {
+            LoadListBillByDate(dtpcheckIn.Value, dtpcheckOut.Value);
+        }
+
+        private void FormAdmin_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'QuanLyQuanAnKLKKDataSet1.USP_GetListBillByDaterReport' table. You can move, or remove it, as needed.
+            this.USP_GetListBillByDaterReportTableAdapter.Fill(this.QuanLyQuanAnKLKKDataSet1.USP_GetListBillByDaterReport, dtpcheckIn.Value, dtpcheckOut.Value);
+
+            this.rpView.RefreshReport();
+        }
+
+        
         
 
         

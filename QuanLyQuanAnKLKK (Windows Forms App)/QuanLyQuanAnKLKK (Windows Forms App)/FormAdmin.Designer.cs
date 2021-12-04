@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.TabcAdmin = new System.Windows.Forms.TabControl();
             this.TabpFood = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -105,10 +107,16 @@
             this.btWatchBill = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpcheckOut = new System.Windows.Forms.DateTimePicker();
+            this.dtpcheckIn = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgvBill = new System.Windows.Forms.DataGridView();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.rpView = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.QuanLyQuanAnKLKKDataSet1 = new QuanLyQuanAnKLKK__Windows_Forms_App_.QuanLyQuanAnKLKKDataSet1();
+            this.USP_GetListBillByDaterReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.USP_GetListBillByDaterReportTableAdapter = new QuanLyQuanAnKLKK__Windows_Forms_App_.QuanLyQuanAnKLKKDataSet1TableAdapters.USP_GetListBillByDaterReportTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             this.TabcAdmin.SuspendLayout();
             this.TabpFood.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -146,7 +154,10 @@
             this.TabpDoanhThu.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QuanLyQuanAnKLKKDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.USP_GetListBillByDaterReportBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TabcAdmin
@@ -156,6 +167,7 @@
             this.TabcAdmin.Controls.Add(this.TabpAccount);
             this.TabcAdmin.Controls.Add(this.TabpTable);
             this.TabcAdmin.Controls.Add(this.TabpDoanhThu);
+            this.TabcAdmin.Controls.Add(this.tabPage1);
             this.TabcAdmin.Location = new System.Drawing.Point(12, 12);
             this.TabcAdmin.Name = "TabcAdmin";
             this.TabcAdmin.SelectedIndex = 0;
@@ -489,6 +501,7 @@
             // 
             // dtgvCategory
             // 
+            this.dtgvCategory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvCategory.Location = new System.Drawing.Point(3, 3);
             this.dtgvCategory.Name = "dtgvCategory";
@@ -865,6 +878,8 @@
             // 
             // dtgvTable
             // 
+            this.dtgvTable.AllowUserToOrderColumns = true;
+            this.dtgvTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvTable.Location = new System.Drawing.Point(0, 0);
             this.dtgvTable.Name = "dtgvTable";
@@ -888,8 +903,8 @@
             this.panel4.Controls.Add(this.btWatchBill);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.dateTimePicker1);
-            this.panel4.Controls.Add(this.dateTimePicker2);
+            this.panel4.Controls.Add(this.dtpcheckOut);
+            this.panel4.Controls.Add(this.dtpcheckIn);
             this.panel4.Location = new System.Drawing.Point(6, 382);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(740, 64);
@@ -904,6 +919,7 @@
             this.btWatchBill.TabIndex = 4;
             this.btWatchBill.Text = "Xem thống kê";
             this.btWatchBill.UseVisualStyleBackColor = true;
+            this.btWatchBill.Click += new System.EventHandler(this.btWatchBill_Click);
             // 
             // label1
             // 
@@ -925,35 +941,83 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Ngày bắt đầu";
             // 
-            // dateTimePicker1
+            // dtpcheckOut
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(490, 29);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(221, 20);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dtpcheckOut.Location = new System.Drawing.Point(490, 29);
+            this.dtpcheckOut.Name = "dtpcheckOut";
+            this.dtpcheckOut.Size = new System.Drawing.Size(221, 20);
+            this.dtpcheckOut.TabIndex = 1;
             // 
-            // dateTimePicker2
+            // dtpcheckIn
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(25, 29);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(228, 20);
-            this.dateTimePicker2.TabIndex = 0;
+            this.dtpcheckIn.Location = new System.Drawing.Point(25, 29);
+            this.dtpcheckIn.Name = "dtpcheckIn";
+            this.dtpcheckIn.Size = new System.Drawing.Size(228, 20);
+            this.dtpcheckIn.TabIndex = 0;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.dtgvBill);
             this.panel3.Location = new System.Drawing.Point(3, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(752, 362);
             this.panel3.TabIndex = 2;
             // 
-            // dataGridView1
+            // dtgvBill
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(740, 358);
-            this.dataGridView1.TabIndex = 0;
+            this.dtgvBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvBill.Location = new System.Drawing.Point(3, 12);
+            this.dtgvBill.Name = "dtgvBill";
+            this.dtgvBill.Size = new System.Drawing.Size(740, 358);
+            this.dtgvBill.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.rpView);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(758, 459);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "Report";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // rpView
+            // 
+            reportDataSource4.Name = "DataSet1";
+            reportDataSource4.Value = this.USP_GetListBillByDaterReportBindingSource;
+            this.rpView.LocalReport.DataSources.Add(reportDataSource4);
+            this.rpView.LocalReport.ReportEmbeddedResource = "QuanLyQuanAnKLKK__Windows_Forms_App_.Report1.rdlc";
+            this.rpView.Location = new System.Drawing.Point(0, 0);
+            this.rpView.Name = "rpView";
+            this.rpView.Size = new System.Drawing.Size(758, 459);
+            this.rpView.TabIndex = 0;
+            // 
+            // QuanLyQuanAnKLKKDataSet1
+            // 
+            this.QuanLyQuanAnKLKKDataSet1.DataSetName = "QuanLyQuanAnKLKKDataSet1";
+            this.QuanLyQuanAnKLKKDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // USP_GetListBillByDaterReportBindingSource
+            // 
+            this.USP_GetListBillByDaterReportBindingSource.DataMember = "USP_GetListBillByDaterReport";
+            this.USP_GetListBillByDaterReportBindingSource.DataSource = this.QuanLyQuanAnKLKKDataSet1;
+            // 
+            // USP_GetListBillByDaterReportTableAdapter
+            // 
+            this.USP_GetListBillByDaterReportTableAdapter.ClearBeforeFill = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(645, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Xem";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormAdmin
             // 
@@ -965,6 +1029,7 @@
             this.Name = "FormAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
+            this.Load += new System.EventHandler(this.FormAdmin_Load);
             this.TabcAdmin.ResumeLayout(false);
             this.TabpFood.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -1015,7 +1080,10 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.QuanLyQuanAnKLKKDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.USP_GetListBillByDaterReportBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1041,10 +1109,10 @@
         private System.Windows.Forms.Button btWatchBill;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpcheckOut;
+        private System.Windows.Forms.DateTimePicker dtpcheckIn;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgvBill;
         private System.Windows.Forms.Label lbIDFood;
         private System.Windows.Forms.Button btSearchFood;
         private System.Windows.Forms.TextBox txtSearchFoodName;
@@ -1103,5 +1171,11 @@
         private System.Windows.Forms.ComboBox cbxFoodCategory;
         private System.Windows.Forms.NumericUpDown nudAccountType;
         private System.Windows.Forms.DataGridView dtgvCategory;
+        private System.Windows.Forms.TabPage tabPage1;
+        private Microsoft.Reporting.WinForms.ReportViewer rpView;
+        private System.Windows.Forms.BindingSource USP_GetListBillByDaterReportBindingSource;
+        private QuanLyQuanAnKLKKDataSet1 QuanLyQuanAnKLKKDataSet1;
+        private QuanLyQuanAnKLKKDataSet1TableAdapters.USP_GetListBillByDaterReportTableAdapter USP_GetListBillByDaterReportTableAdapter;
+        private System.Windows.Forms.Button button1;
     }
 }
