@@ -55,3 +55,5 @@ D:\OOP\project_oop\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAn
 >>>>>>> f08b454e0a7c437fb301d2bd695431623048dd77
 D:\OOP\project_oop\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\RdlCompile.cache
 D:\OOP\project_oop\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\RdlCompile.compiled
+E:\DKP1200\HKI-2021\LTHDT\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\RdlCompile.cache
+E:\DKP1200\HKI-2021\LTHDT\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\RdlCompile.compiled
