@@ -108,10 +108,10 @@
             this.btWatchBill = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpcheckOut = new System.Windows.Forms.DateTimePicker();
+            this.dtpcheckIn = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgvBill = new System.Windows.Forms.DataGridView();
             this.TabcAdmin.SuspendLayout();
             this.TabpFood.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -150,7 +150,7 @@
             this.TabpDoanhThu.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
             this.SuspendLayout();
             // 
             // TabcAdmin
@@ -921,8 +921,8 @@
             this.panel4.Controls.Add(this.btWatchBill);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.dateTimePicker1);
-            this.panel4.Controls.Add(this.dateTimePicker2);
+            this.panel4.Controls.Add(this.dtpcheckOut);
+            this.panel4.Controls.Add(this.dtpcheckIn);
             this.panel4.Location = new System.Drawing.Point(6, 382);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(740, 64);
@@ -937,6 +937,7 @@
             this.btWatchBill.TabIndex = 4;
             this.btWatchBill.Text = "Xem thống kê";
             this.btWatchBill.UseVisualStyleBackColor = true;
+            this.btWatchBill.Click += new System.EventHandler(this.btWatchBill_Click);
             // 
             // label1
             // 
@@ -958,35 +959,36 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Ngày bắt đầu";
             // 
-            // dateTimePicker1
+            // dtpcheckOut
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(490, 29);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(221, 20);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dtpcheckOut.Location = new System.Drawing.Point(490, 29);
+            this.dtpcheckOut.Name = "dtpcheckOut";
+            this.dtpcheckOut.Size = new System.Drawing.Size(221, 20);
+            this.dtpcheckOut.TabIndex = 1;
             // 
-            // dateTimePicker2
+            // dtpcheckIn
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(25, 29);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(228, 20);
-            this.dateTimePicker2.TabIndex = 0;
+            this.dtpcheckIn.Location = new System.Drawing.Point(25, 29);
+            this.dtpcheckIn.Name = "dtpcheckIn";
+            this.dtpcheckIn.Size = new System.Drawing.Size(228, 20);
+            this.dtpcheckIn.TabIndex = 0;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.dtgvBill);
             this.panel3.Location = new System.Drawing.Point(3, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(752, 362);
             this.panel3.TabIndex = 2;
             // 
-            // dataGridView1
+            // dtgvBill
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(740, 358);
-            this.dataGridView1.TabIndex = 0;
+            this.dtgvBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvBill.Location = new System.Drawing.Point(3, 12);
+            this.dtgvBill.Name = "dtgvBill";
+            this.dtgvBill.Size = new System.Drawing.Size(740, 358);
+            this.dtgvBill.TabIndex = 0;
             // 
             // FormAdmin
             // 
@@ -1050,7 +1052,7 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1076,10 +1078,10 @@
         private System.Windows.Forms.Button btWatchBill;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpcheckOut;
+        private System.Windows.Forms.DateTimePicker dtpcheckIn;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgvBill;
         private System.Windows.Forms.Label lbIDFood;
         private System.Windows.Forms.Button btSearchFood;
         private System.Windows.Forms.TextBox txtSearchFoodName;

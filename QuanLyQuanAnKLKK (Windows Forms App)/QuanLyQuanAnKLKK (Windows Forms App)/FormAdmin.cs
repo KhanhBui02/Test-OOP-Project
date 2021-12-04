@@ -30,8 +30,9 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             InitializeComponent();
             LoadAccountList();
             LoadCategoryIntoComboBox(cbxFoodCategory);
+            LoadListBillByDate(dtpcheckIn.Value, dtpcheckOut.Value);
             Loadd();
-
+            LoadDateTimePickerBill();
         }
         #region method
         void Loadd()        //vì xuất hiện lỗi nên ko dùng Load
@@ -163,6 +164,18 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         }
         void LoadCategoryIntoComboBox(ComboBox cb) {
             cb.DataSource = FoodCategoryDAO.Instance.GetListCategory();
+        }
+
+        void LoadListBillByDate(DateTime checkIn,DateTime checkOut)
+        {
+           dtgvBill.DataSource =  BillDAO.Instance.GetListBillByDate(checkIn, checkOut);
+        }
+
+        void LoadDateTimePickerBill()
+        {
+            DateTime today = DateTime.Now;
+            dtpcheckIn.Value = new DateTime(today.Year, today.Month, 1);
+            dtpcheckOut.Value = dtpcheckIn.Value.AddMonths(1).AddDays(-1);
         }
         #endregion
 
@@ -446,6 +459,11 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
         private void dtgvCategory_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         
+        }
+
+        private void btWatchBill_Click(object sender, EventArgs e)
+        {
+            LoadListBillByDate(dtpcheckIn.Value, dtpcheckOut.Value);
         }
 
         

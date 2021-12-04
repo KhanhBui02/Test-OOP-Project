@@ -304,7 +304,7 @@ GO
 --Trigger khi insert và update
 DELETE BillInfo
 go
-ALTER TRIGGER UTG_UpdateBillInfor
+CREATE TRIGGER UTG_UpdateBillInfor
 ON BillInfo FOR INSERT, UPDATE 
 AS
 BEGIN
@@ -611,3 +611,21 @@ BEGIN
     END
     RETURN @strInput
 END
+
+ALTER TABLE BILL ADD totalPrice float
+
+SELECT * FROM BILL
+
+DELETE Bill
+GO
+
+ALTER PROC USP_GetListBillByDate
+@checkin date, @checkout date
+AS
+BEGIN
+	SELECT TB.TENBAN AS[Tên bàn],B.totalPrice AS [Tổng tiền],B.DateCheckIn AS [Ngày vào],B.DateCheckOut AS [Ngày ra],B.discount  AS[Giảm giá]
+	FROM Bill AS B , TableFood AS TB
+	WHERE B.DateCheckIn >=@checkin AND B.DateCheckOut <=@checkout AND B.TinhTrang= 1 
+	AND TB.IDTable = B.IDTable
+END
+GO

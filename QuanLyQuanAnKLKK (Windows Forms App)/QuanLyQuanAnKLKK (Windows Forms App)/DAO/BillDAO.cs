@@ -40,15 +40,21 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_.DAO
         }
 
         // update lại tình trạng bill
-        public void CheckOut(int id,int discount)
+        public void CheckOut(int id,int discount,float totalPrice)
         {
-            string query = "UPDATE Bill SET DateCheckOut = GETDATE(), TinhTrang = 1, "+"discount = "+ discount +" WHERE IDBill = " + id;  
+            string query = "UPDATE Bill SET DateCheckOut = GETDATE(), TinhTrang = 1, "+"discount = "+ discount +",totalPrice = "+ totalPrice +"WHERE IDBill = " + id;  
             DataProvider.Instance.ExecuteNonQuery(query);
         }
 
         public void InsertBill(int id)
         {
             DataProvider.Instance.ExecuteNonQuery("EXEC USP_InsertBill @IDTable", new object[]{id}); //thêm bill theo ID của bàn (@IDTable)
+        }
+
+        public DataTable GetListBillByDate(DateTime checkIn,DateTime checkOut)
+        {
+
+            return DataProvider.Instance.ExecuteQuery("EXEC USP_GetListBillByDate @checkin , @checkout",new object[]{checkIn,checkOut});
         }
 
         //lấy ID của bill cuối cùng
