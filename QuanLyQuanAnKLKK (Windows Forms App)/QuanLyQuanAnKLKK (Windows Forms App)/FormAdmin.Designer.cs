@@ -87,9 +87,6 @@
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
             this.TabpTable = new System.Windows.Forms.TabPage();
             this.panel20 = new System.Windows.Forms.Panel();
-            this.panel27 = new System.Windows.Forms.Panel();
-            this.cbStatusTable = new System.Windows.Forms.ComboBox();
-            this.lbStatusTable = new System.Windows.Forms.Label();
             this.panel21 = new System.Windows.Forms.Panel();
             this.txtTableName = new System.Windows.Forms.TextBox();
             this.lbTableName = new System.Windows.Forms.Label();
@@ -141,7 +138,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.TabpTable.SuspendLayout();
             this.panel20.SuspendLayout();
-            this.panel27.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -742,41 +738,12 @@
             // 
             // panel20
             // 
-            this.panel20.Controls.Add(this.panel27);
             this.panel20.Controls.Add(this.panel21);
             this.panel20.Controls.Add(this.panel22);
             this.panel20.Location = new System.Drawing.Point(450, 111);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(279, 342);
             this.panel20.TabIndex = 6;
-            // 
-            // panel27
-            // 
-            this.panel27.Controls.Add(this.cbStatusTable);
-            this.panel27.Controls.Add(this.lbStatusTable);
-            this.panel27.Location = new System.Drawing.Point(6, 119);
-            this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(270, 42);
-            this.panel27.TabIndex = 3;
-            // 
-            // cbStatusTable
-            // 
-            this.cbStatusTable.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbStatusTable.FormattingEnabled = true;
-            this.cbStatusTable.Location = new System.Drawing.Point(134, 10);
-            this.cbStatusTable.Name = "cbStatusTable";
-            this.cbStatusTable.Size = new System.Drawing.Size(121, 24);
-            this.cbStatusTable.TabIndex = 1;
-            // 
-            // lbStatusTable
-            // 
-            this.lbStatusTable.AutoSize = true;
-            this.lbStatusTable.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStatusTable.Location = new System.Drawing.Point(12, 9);
-            this.lbStatusTable.Name = "lbStatusTable";
-            this.lbStatusTable.Size = new System.Drawing.Size(111, 22);
-            this.lbStatusTable.TabIndex = 0;
-            this.lbStatusTable.Text = "Trạng thái:";
             // 
             // panel21
             // 
@@ -1037,8 +1004,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.TabpTable.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
-            this.panel27.ResumeLayout(false);
-            this.panel27.PerformLayout();
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
             this.panel22.ResumeLayout(false);
@@ -1135,9 +1100,6 @@
         private System.Windows.Forms.Button btInsert;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.DataGridView dtgvTable;
-        private System.Windows.Forms.Panel panel27;
-        private System.Windows.Forms.ComboBox cbStatusTable;
-        private System.Windows.Forms.Label lbStatusTable;
         private System.Windows.Forms.ComboBox cbxFoodCategory;
         private System.Windows.Forms.NumericUpDown nudAccountType;
         private System.Windows.Forms.DataGridView dtgvCategory;
