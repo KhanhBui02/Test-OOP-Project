@@ -17,8 +17,6 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
     {
         public static int check = 0;
 
-        FormManager fm;
-
         BindingSource accountList = new BindingSource();
         BindingSource foodlist = new BindingSource();
         BindingSource foodcategory = new BindingSource();
@@ -432,25 +430,11 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             }
         }
 
-        private event EventHandler insertTable;
-        public event EventHandler InsertTable
-        {
-            add { insertTable += value; }
-            remove { insertTable -= value; }
-        }
-
         private event EventHandler updateTable;
         public event EventHandler UpdateTable
         {
             add { updateTable += value; }
             remove { updateTable -= value; }
-        }
-
-        private event EventHandler deleteTable;
-        public event EventHandler DeleteTable
-        {
-            add { deleteTable += value; }
-            remove { deleteTable -= value; }
         }
         #endregion
 
