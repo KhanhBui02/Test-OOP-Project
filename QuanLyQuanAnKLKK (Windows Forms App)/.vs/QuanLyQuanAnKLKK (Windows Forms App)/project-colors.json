@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b314939a-d756-4733-9da0-f2afbf42820a": {
+      "ProjectGuid": "b314939a-d756-4733-9da0-f2afbf42820a",
+      "DisplayName": "QuanLyQuanAnKLKK (Windows Forms App)",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}
