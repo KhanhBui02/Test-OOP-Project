@@ -238,6 +238,7 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             if (MessageBox.Show(String.Format("Bạn có chắc thanh toán hóa đơn cho {0}\nTổng tiền: {1} Đồng\nGiảm giá: {2}%\nTổng tiền sau khi giảm giá: {3} Đồng", table.Name,totalPrice,discount,finalPrice) ,"Thông báo",MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 BillDAO.Instance.CheckOut(IDBill,discount,(float)finalPrice);
+                LoadReport(table.ID);
                 ShowBill(table.ID); //show list bill đã xóa
                 LoadTable(); //load lại bàn
             }
@@ -247,6 +248,12 @@ namespace QuanLyQuanAnKLKK__Windows_Forms_App_
             cb.DataSource = TableDAO.Instance.LoadTableList();
             cb.DisplayMember = "Name";
 
+        }
+
+        void LoadReport(int id)
+        {
+            FormPrint f = new FormPrint(id);
+            f.ShowDialog();
         }
 
         private void btSwapTable_Click(object sender, EventArgs e)      // nút chuyển bàn

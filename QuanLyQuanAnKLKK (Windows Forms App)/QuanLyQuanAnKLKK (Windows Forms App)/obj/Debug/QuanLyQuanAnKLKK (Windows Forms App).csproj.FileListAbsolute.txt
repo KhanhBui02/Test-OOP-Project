@@ -56,3 +56,18 @@ D:\OOP\project_oop\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAn
 E:\DKP1200\HKI-2021\LTHDT\OOP-Project-f18f69fd2ddb95a06fd19e24f8d1eca9f173755f\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe.config
 E:\DKP1200\HKI-2021\LTHDT\OOP-Project-f18f69fd2ddb95a06fd19e24f8d1eca9f173755f\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
 E:\DKP1200\HKI-2021\LTHDT\OOP-Project-f18f69fd2ddb95a06fd19e24f8d1eca9f173755f\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe.config
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csprojResolveAssemblyReference.cache
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormAdmin.resources
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormLogin.resources
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormManager.resources
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormChangeAccountInfo.resources
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.FormPrint.resources
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK__Windows_Forms_App_.Properties.Resources.resources
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\QuanLyQuanAnKLKK (Windows Forms App).csproj.GenerateResource.Cache
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\RdlCompile.cache
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\obj\Debug\RdlCompile.compiled
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).exe
+E:\DKP1200\HKI-2021\LTHDT\OOP-Projectest\OOP-Project\QuanLyQuanAnKLKK (Windows Forms App)\QuanLyQuanAnKLKK (Windows Forms App)\bin\Debug\QuanLyQuanAnKLKK (Windows Forms App).pdb
